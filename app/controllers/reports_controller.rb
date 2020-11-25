@@ -1,11 +1,13 @@
 class ReportsController < ApplicationController
   def index
-    @reports = Report.all
+    @reports = Report.geocoded
 
-    @markers = @reports.geocoded.map do |report|
+    @markers = @reports.map do |report|
       {
         lat: report.latitude,
-        lng: report.longitude
+        lng: report.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { report: report }),
+        image_url: helpers.asset_url('dog_icon.png')
       }
     end
   end
