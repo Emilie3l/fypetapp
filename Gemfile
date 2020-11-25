@@ -23,6 +23,9 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'cloudinary', '~> 1.16.0'
 
+gem 'geocoder'
+
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
