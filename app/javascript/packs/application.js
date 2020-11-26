@@ -26,6 +26,8 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
+import { initMapbox } from '../plugins/init_mapbox';
+
 // import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 
@@ -34,3 +36,7 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   initUpdateNavbarOnScroll();
 });
+
+document.addEventListener('turbolinks:load', () => {
+  initMapbox();
+})
