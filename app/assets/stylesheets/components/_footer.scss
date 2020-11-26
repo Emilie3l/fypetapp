@@ -1,0 +1,36 @@
+.footer {
+  background: $navbar-bg-color;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  height: 90px;
+  padding: 0px 50px;
+  margin-top: 50px;
+  box-shadow: 2px 0px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+}
+.footer-links a {
+  text-decoration: none;
+  font-size: 2rem;
+  padding: 0px 10px;
+  color: $fypet-cto-color;
+  opacity: 0.20;
+}
+.footer-links a:hover {
+  opacity: 1;
+}
+.align-center {
+  text-align: center;
+}
+.fyp-foo-txt {
+  font-family: $headers-font;
+  font-size: 1.5rem;
+  color: $fypet-cto-color;
+  opacity: 0.30;
+}
