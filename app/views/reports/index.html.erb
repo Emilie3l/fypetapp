@@ -1,4 +1,3 @@
-
 <body style="background-color:white">
 <div class="row dropdown-row">
   <div class="dropdown-index">
@@ -45,7 +44,10 @@
       <% end %>
     </div>
   </div>
-  <div class="map">
-    <p>Hi</p>
+  <div class="container map">
+    <div id="map"
+         style="width: 100%; height: 600px;"
+         data-markers="<%= @markers.to_json %>"
+         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
   </div>
-</div>

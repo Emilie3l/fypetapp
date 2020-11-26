@@ -80,6 +80,7 @@ pet_color = ["White", "Black", "Gold", "Cream", "Brown"]
 pet_gender = ["Male", "Female", "Unknown"]
 pet_age = [1, 3, 4, 6, 5, 9, 8, 13, 2]
 pet_traits = "Traits go in here, and could be a short description too."
+pet_category = ["dog", "cat"]
 
 puts ""
 puts ""
@@ -93,8 +94,10 @@ puts "Creating some pets..."
   pet.gender = pet_gender.sample
   pet.age = pet_age.sample
   pet.traits = pet_traits
+  pet.category = pet_category.sample
   pet.save
-  puts "Pet named #{pet.name} was created."
+  puts "Pet #{pet_number}, named #{pet.name} was created."
+  pet_number += 1
 end
 puts "Pets were created..."
 puts ""
