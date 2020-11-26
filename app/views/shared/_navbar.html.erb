@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fypet-navbar">
+<div class="navbar navbar-expand-sm navbar-light fypet-navbar">
   <%= link_to root_path, class: "navbar-brand" do %>
     <div class="fypet-text"><h2>Find Your Pet</h2></div>
   <% end %>
@@ -18,19 +18,24 @@
         </li>
       <% if user_signed_in? %>
         <li class="nav-item fypet-nav-item active">
-          <%= link_to "Home", root_path, class: "fypet-nav-link" %>
+          <%= link_to root_path, class: "fypet-nav-link" do %>
+            <i class="fas fa-home"></i><span>Home</span>
+          <% end %>
         </li>
         <li class="nav-item fypet-nav-item">
-          <%= link_to "Messages", "#", class: "fypet-nav-link" %>
+          <%= link_to "#", class: "fypet-nav-link" do %>
+            <i class="far fa-envelope"></i><span>Messages</span>
+          <% end %>
         </li>
-        <li class="nav-item dropdown">
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <!--<%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> -->
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "My profile", "#", class: "fypet-dropdown-item dropdown-item" %>
-            <%= link_to "My reports", "#", class: "fypet-dropdown-item dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "fypet-dropdown-item dropdown-item" %>
-          </div>
+        <li class="nav-item fypet-nav-item">
+          <%= link_to "#", class: "fypet-nav-link" do %>
+            <i class="fas fa-user"></i><span>My Profile</span>
+          <% end %>
+        </li>
+        <li class="nav-item fypet-nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: "fypet-nav-link" do %>
+            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+          <% end %>
         </li>
       <% else %>
         <li class="nav-item fypet-nav-item">
