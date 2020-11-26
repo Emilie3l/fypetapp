@@ -1,0 +1,33 @@
+.col-form-label {
+  font-family: "Baloo 2";
+  color: #124A72;
+  font-weight: 500;
+  font-size: 22px;
+  margin-right: 15px;
+  padding-bottom: 0;
+}
+
+.radio-select {
+  color: #124A72;
+  font-size: 18px;
+  position: absolute;
+  left: 40px;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  border: 1px solid #124A72;
+  background-color: white;
+}
+
+input:checked {
+  background-color: #E6455A;;
+  border: none;
+}
