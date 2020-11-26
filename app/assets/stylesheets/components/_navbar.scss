@@ -19,6 +19,13 @@
   width: 40px;
 }
 .fypet-text {
+  display: flex;
+  align-items: baseline;
+  i {
+    font-size: 2rem;
+    color: $text-headers-color;
+    margin-right: 8px;
+  }
   h2 {
     font-family: $headers-font;
     font-weight: 700;
