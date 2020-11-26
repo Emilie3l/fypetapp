@@ -7,7 +7,7 @@ class ReportsController < ApplicationController
         lat: report.latitude,
         lng: report.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { report: report }),
-        image_url: helpers.asset_url(report.pet.category.dog? ? 'dog_icon.png' : 'cat_icon.png')
+        image_url: helpers.asset_url(report.pet.category == "dog" ? 'dog_icon.png' : 'cat_icon.png')
       }
     end
   end
