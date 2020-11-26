@@ -7,17 +7,22 @@
   overflow: hidden;
   background-color: transparent;
   transition: 0.8s background-color ease;
+  z-index: 10;
 }
+
 .fypet-navbar-colored {
   background-color: $navbar-bg-color;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
 .fypet-navbar .navbar-collapse {
   flex-grow: 0;
 }
+
 .fypet-navbar .navbar-brand img {
   width: 40px;
 }
+
 .fypet-text {
   display: flex;
   align-items: baseline;
@@ -33,6 +38,7 @@
     margin-block-end: 0;
   }  
 }
+
 .fypet-nav-item {
   font-family: $headers-font;
   font-size: 1.2rem;
@@ -45,12 +51,15 @@
     margin-left: 8px;
   }
 }
+
 .fypet-nav-link {
   color: $navbar-links-color;
 }
+
 .fypet-navbar-nav {
   align-items: center;
 }
+
 .fypet-dropdown-item {
   font-family: $headers-font;
   font-weight: 600;
