@@ -36,18 +36,13 @@
   background-color: #FFD4CF;
 }
 
-
-.map-card {
-
-}
-
 .report-card {
   border-radius: 10px;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
-  height: 220px;
+  height: 170px;
   padding: 0;
   position: absolute;
-  bottom: 40px;
+  bottom: 80px;
   right: 40px;
   max-width: 50vw;
   background-color: #FFD4CF;
@@ -68,3 +63,7 @@
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
 }
 
+.custom-file {
+  position: absolute;
+  bottom: 0;
+}

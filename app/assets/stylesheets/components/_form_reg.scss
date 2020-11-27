@@ -1,10 +1,45 @@
-<form>
-  <div class="form-row">
-    <div class="col-7">
-      <input type="text" class="form-control" placeholder="City">
-    </div>
-    <div class="col">
-      <input type="text" class="form-control" placeholder="Zip">
-    </div>
-  </div>
-</form>
+.long-input {
+  background-color: transparent !important;
+  border: none;
+  border-bottom: 2px solid white;
+  height: 25px;
+  width: 400px;
+}
+
+.custom-control-label {
+  font-family: "Baloo 2";
+  color: #124A72;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.report-form {
+  padding-left: 70px;
+  padding-top: 10px;
+  display: flex;
+  text-align: center;
+  position: relative;
+}
+
+.col-form-label {
+  font-family: "Baloo 2";
+  color: #124A72;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+
+.form-control {
+  background-color: transparent !important;
+  border: none;
+  border-bottom: 2px solid white;
+  height: 25px;
+}
+
+.small-input {
+  background-color: transparent !important;
+  border: none;
+  border-bottom: 2px solid white;
+  height: 25px;
+  width: 100px;
+}
