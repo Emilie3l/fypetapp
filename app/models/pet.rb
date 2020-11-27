@@ -4,5 +4,5 @@ class Pet < ApplicationRecord
   has_many :reports
   has_many :users, through: :reports
 
-  has_many_attached :photos
+  has_one_attached :photo
 end
