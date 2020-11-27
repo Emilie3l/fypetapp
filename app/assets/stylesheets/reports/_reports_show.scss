@@ -1,0 +1,83 @@
+.card-report {
+  display: flex;
+  width: 90%;
+  margin: 15px auto;
+  padding: 10px;
+  border-radius: 8px;
+}
+.card-report-basic {
+  flex: 0 0 40%;
+  height: 100%;
+  border-radius: 8px;
+  box-shadow: 0 0px 10px rgba($text-headers-color,0.30);
+}
+.card-report-basic > p {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: $text-headers-color;
+}
+.card-report-frame {
+  text-align: center;
+}
+.card-report-frame > h2 {
+  background-color: $fypet-cto-color;
+  border-radius: 8px 8px 0 0;
+  margin: 0;
+  padding: 8px 0;
+  color: white;
+}
+.card-report-frame > img {
+  width: 100%;
+  height: 300px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  object-fit: cover;
+}
+.card-report-description {
+  display: flex;
+  padding: 0px 10px;
+  justify-content: space-between;
+}
+.card-report-description > h4 {
+  font-weight: bolder;
+  margin-bottom: 0;
+}
+.card-report-description span { 
+  font-family: $headers-font;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: $fypet-cto-color;
+}
+.card-report-basic > p {
+  padding: 0 10px;
+  margin-bottom: 15px;
+}
+.card-report-details {
+  flex-grow: 1;
+  margin-left: 15px;
+  border-radius: 8px;
+  background-color: rgba($navbar-bg-color,0.2);
+  padding: 10px;
+}
+.card-report-details h3 {
+  font-weight: bolder;
+}
+.report-fields > table {
+  border: none;
+  td {
+    padding: 2px 0px;
+    vertical-align: center;
+    border: none;
+  }
+}
+td > strong {
+  font-family: $headers-font;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: $fypet-cto-color;
+}
+td > span {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: $text-headers-color;
+}
