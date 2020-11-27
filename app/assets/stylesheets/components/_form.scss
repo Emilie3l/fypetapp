@@ -1,0 +1,45 @@
+.col-form-label {
+  font-family: "Baloo 2";
+  color: #124A72;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.form-check-label {
+  color: #124A72;
+  font-size: 15px;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+
+  border: 1px solid #124A72;
+  background-color: white;
+}
+
+input:checked {
+  background-color: #E6455A;;
+  border: none;
+}
+
+.form-control {
+  background-color: transparent !important;
+  border: none;
+  border-bottom: 2px solid white;
+  height: 25px;
+}
+
+.pet-form {
+  padding-left: 50px;
+  padding-top: 10px;
+}
+
+.right-column {
+  padding-left: 35px;
+}

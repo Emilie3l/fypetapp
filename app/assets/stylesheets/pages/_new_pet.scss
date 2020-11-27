@@ -1,0 +1,79 @@
+.card-large {
+  border-radius: 25px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
+  margin: auto;
+  margin-bottom: 20px;
+  margin-top: 130px;
+  height: 550px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+}
+
+.img-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
+  margin-bottom: 40px;
+  height: 396px;
+  padding: 0;
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  max-width: 20vw;
+}
+
+.pet-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
+  margin-bottom: 20px;
+  margin-top: 40px;
+  height: 220px;
+  padding-top: 10px;
+  padding-left: 10px;
+  position: absolute;
+  right: 40px;
+  max-width: 50vw;
+  background-color: #FFD4CF;
+}
+
+.report-card {
+  border-radius: 10px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
+  height: 160px;
+  padding: 0;
+  position: absolute;
+  bottom: 115px;
+  right: 40px;
+  max-width: 50vw;
+  background-color: #FFD4CF;
+}
+
+.report-status {
+  background-color: #E6455A;
+  color: white;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 10px 10px 0 0;
+  height: 60px;
+  padding-top: 10px;
+  font-size: 30px;
+  text-align: center;
+  font-family: "Baloo 2";
+  text-transform: uppercase;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.custom-file {
+  position: absolute;
+  bottom: 0;
+}
+
+.btn-create {
+  padding: 10px 80px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 460px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.25);
+}
