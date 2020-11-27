@@ -1,11 +1,43 @@
 <div>
   <div class="container">
   <div class="row search-index">
-      <div class="left col-sm-6 text-center">
+      <div class="left-index col-sm-6">
+        <div class="dropdown">
+          <button class="dropbtn">Category ▾</button>
+            <div class="dropdown-content">
+              <a href="#">Dog</a>
+              <a href="#">Cat</a>
+            </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Breed ▾</button>
+            <div class="dropdown-content">
+              <a href="#">Beagle</a>
+              <a href="#">Bulldog</a>
+              <a href="#">Chihuahua</a>
+              <a href="#">German Shepard</a>
+              <a href="#">Labrador</a>
+              <a href="#">Schnauzer</a>
+              <a href="#">Terrier</a>
+              <a href="#">Other</a>
+            </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropbtn">Color ▾</button>
+            <div class="dropdown-content">
+              <a href="#">Black</a>
+              <a href="#">Brown</a>
+              <a href="#">Cream</a>
+              <a href="#">Gold</a>
+              <a href="#">Grey</a>
+              <a href="#">Yellow</a>
+              <a href="#">Other</a>
+            </div>
+        </div>
       </div>
-      <div class="right col-sm-6 text-center">
-        <h2><span style="color: #E6455A"><%= @reports.length %></span> Pets Found Near You</h2>
-      </div>
+    <div class="right-index col-sm-6 text-center">
+      <h2><span style="color: #E6455A"><%= @reports.length %></span> Pets Found Near You</h2>
+    </div>
 
   </div>
 </div>
@@ -15,8 +47,8 @@
         <% @reports.each do |report| %>
           <div class="card-padding col-sm-12 col-lg-6">
             <div class="card">
-              <img class="card-img-top" src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" alt="Card image top">
               <%= link_to report_path(report), class: 'card-link' do %>
+              <img class="card-img-top" src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" alt="Card image top">
                 <div class="card-text">
                   <h2 class="name"><%= report.pet.name %></h2>
                   <h2 class="address"><%= report.address %></h2>
