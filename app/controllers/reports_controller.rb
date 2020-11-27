@@ -3,10 +3,10 @@ class ReportsController < ApplicationController
 
   def index
     @reports = Report.geocoded
-    if user_signed_in?
-      @user_address = current_user.address
-    end
-    @reports = @reports.near(@user_address, 100)
+    # if user_signed_in?
+    #   @user_address = current_user.address
+    # end
+    # @reports = @reports.near(@user_address, 100)
     @markers = @reports.map do |report|
       {
         lat: report.latitude,
