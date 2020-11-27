@@ -1,0 +1,70 @@
+<h1>Report Details</h1>
+<div class="card-report">
+  <div class="card-report-basic">
+    <div class="card-report-frame">
+      <% if report.status == "Missing" %>
+        <h2 style="background-color: rgba(255,0,0,0.9)"><i class="far fa-sad-cry"></i>
+      <% elsif report.status == "Found" %>
+        <h2 style="background-color: rgba(0,128,0,0.9)"><i class="far fa-smile"></i>
+      <% else %>
+        <h2><i class="far fa-smile-beam"></i>
+      <% end %>
+        <%= report.status %>
+      </h2>
+      <img src="https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80" />
+    </div>
+    <div class="card-report-description">
+      <h4><%= report.pet.name %></h4><span><%= report.pet.category.capitalize %></span>
+    </div>
+    <p><%= report.pet.breed %></p>
+  </div>
+  <div class="card-report-details">
+    <h3>Details</h3>
+    <div class="report-fields">
+      <table class="table">
+        <tbody>
+          <tr>
+            <td><strong>Size:</strong></td>
+            <td><span><%= report.pet.size %></span></td>
+          </tr>
+          <tr>
+            <td><strong>Color:</strong></td>
+            <td><span><%= report.pet.color %></span></td>
+          </tr>
+          <tr>
+            <td><strong>Gender:</strong></td>
+            <td><span><%= report.pet.gender %></span></td>
+          </tr>
+          <tr>
+            <td><strong>Age:</strong></td>
+            <td><span><%= report.pet.age %></span></td>
+          </tr>
+          <tr>
+            <td><strong>Traits:</strong></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="2"><span><%= report.pet.traits %></span></td>
+          </tr>
+          <tr>
+            <td><strong>Date Lost:</strong></td>
+            <td><span><%= report.date.strftime('%a %b %d, %Y') %></span></td>
+          </tr>
+          <% if report.reward_offered %>
+            <tr>
+              <td><strong>Reward:</strong></td>
+              <td><span><%= report.reward_amount %></span></td>
+            </tr>
+          <% end %>
+          <tr>
+            <td><strong>Last seen on:</strong></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="2"><span><%= report.address %></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
