@@ -1,4 +1,6 @@
 class ReportsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index, :show, :new, :create ]
+
   def index
     @reports = Report.geocoded
 
@@ -19,6 +21,7 @@ class ReportsController < ApplicationController
   end
 
   def show
+    @report = Report.find(params[:id])
   end
 
   def edit
