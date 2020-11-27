@@ -1,5 +1,5 @@
 <div class="container card-large">
-  <div class="row align-items-start">
+  <div class="container">
     <div class="col-4 img-card">
       <div class="report-status"><p>Missing</p></div>
       <div class="custom-file">
@@ -13,10 +13,16 @@
         <%= render "form" %>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-12 report-card">
-      <%= render "form_reg" %>
+    <div class="row">
+      <div class="col-12 report-card">
+        <%= render "form_reg" %>
+      </div>
+    </div>
+
+    <div class="card-button d-flex">
+      <a class="btn btn-primary btn-create mx-auto" href="#">Create Report</a>
+    </div>
   </div>
 </div>
+
