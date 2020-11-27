@@ -1,43 +1,30 @@
-<div class="container report-form d-flex justify-content-between">
-  <form>
+<div class="container">
 
-    <div class="row">
-      <div class="form-group col-12">
-        <div class="form-group row pr-3">
-          <label class="col-form-label pr-5" for="validationDefault03">Address:</label>
-          <input type="text" class="form-control long-input" id="validationDefault03" required>
+  <div class="card-report-details">
+    <div class="report-fields">
+      <div>
+      <%= simple_form_for([ @pet, @report ]) do |f| %>
+        <div class="form-label">
+          <%= f.input   :address,
+                        required: true,
+                        autofocus: true, label: "Address:" %>
         </div>
+        <div class="form-label">
+          <%= f.input   :date,
+                        required: true,
+                        autofocus: true, label: "Date:" %>
+        </div>
+        <div>
+          <%= f.input   :reward_offered,
+                        required: true,
+                        autofocus: true, label: "Reward offered?" %>
+          <%= f.input   :reward_amount,
+                        required: true,
+                        autofocus: true, label: "Reward amount:" %>
+        </div>
+        <%= f.submit class: "btn btn-primary btn-new" %>
+        <% end %>
       </div>
     </div>
-
-    <div class="row d-flex justify-content-between">
-      <div class="form-group col-4">
-        <div class="form-group row">
-          <label class="col-form-label">Date:</label>
-          <div class="col">
-            <input type="text" class="form-control">
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group col-4">
-        <div class="form-group row">
-          <label class="custom-control-label" for="customCheck1">Reward?</label>
-          <div class="col">
-            <input type="checkbox" class="custom-control-input" id="customCheck1">
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group col-4">
-        <div class="form-group row">
-          <label class="col-form-label pr-0">Reward amount:</label>
-          <div class="col">
-            <input type="text" class="form-control small-input">
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
+  </div>
 </div>
-

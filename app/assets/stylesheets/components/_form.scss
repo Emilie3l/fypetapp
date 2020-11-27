@@ -1,8 +1,16 @@
-.col-form-label {
+.pet-form {
+  margin-top: 20px;
+}
+
+.input-area {
+  padding-top: 8px;
+}
+
+.form-label {
   font-family: "Baloo 2";
   color: #124A72;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .form-check-label {
@@ -33,11 +41,6 @@ input:checked {
   border: none;
   border-bottom: 2px solid white;
   height: 25px;
-}
-
-.pet-form {
-  padding-left: 50px;
-  padding-top: 10px;
 }
 
 .right-column {

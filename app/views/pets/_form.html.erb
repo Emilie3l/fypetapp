@@ -1,82 +1,40 @@
-<div class="container pet-form">
-  <form>
-    <div class="form-row">
-
-      <div class="d-flex form-group col-6">
-        <div class="form-group row">
-          <label class="col-form-label pr-4">Size:</label>
-          <div class="col p-2 radio-buttons">
-            <div class="form-check form-check-inline pr-3">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-              <label class="form-check-label" for="inlineRadio1">S</label>
-            </div>
-            <div class="form-check form-check-inline pr-3">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-              <label class="form-check-label" for="inlineRadio2">M</label>
-            </div>
-            <div class="form-check form-check-inline pr-3">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-              <label class="form-check-label" for="inlineRadio3">L</label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class=" form-group col-6">
-        <div class="form-group row right-column">
-          <label class="col-form-label">Colors:</label>
-          <div class="col pl-4">
-            <input type="text" class="form-control">
-          </div>
-        </div>
-      </div>
+<div class="container">
+  <div class="pet-form">
+  <%= simple_form_for [ @pet ] do |f| %>
+    <div class=" d-flex justify-content-around input-area form-label">
+      <%= f.input   :name,
+                    required: true,
+                    autofocus: true, label: "My pet name is..." %>
+      <%= f.input   :category,
+                    required: true,
+                    autofocus: true,  label: "I am a..." %>
     </div>
-
-    <div class="form-row d-flex justify-content-around">
-      <div class="d-flex form-group col-6">
-        <div class="form-group row">
-          <label class="col-form-label pr-4">Sex:</label>
-          <div class="col p-2 radio-buttons">
-            <div class="form-check form-check-inline pr-3">
-              <input class="form-check-input" type="radio" name="RadioOptionsSex" id="inlineRadio1" value="option1">
-              <label class="form-check-label" for="inlineRadio1">Male</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="RadioOptionsSex" id="inlineRadio2" value="option1">
-              <label class="form-check-label" for="inlineRadio2">Female</label>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group col-6">
-        <div class="form-group row">
-          <label class="col-form-label right-column ">Age:</label>
-          <div class="col pl-5">
-            <input type="text" class="form-control">
-          </div>
-        </div>
-      </div>
+    <div class=" d-flex justify-content-around input-area form-label">
+      <%= f.input   :size,
+                    required: true,
+                    autofocus: true, label: "My size:" %>
+      <%= f.input   :color,
+                    required: true,
+                    autofocus: true, label: "My color:" %>
     </div>
-
-    <div class="form-row d-flex justify-content-around">
-      <div class="form-group col-6">
-        <div class="form-group row">
-          <label class="col-form-label">Special traits:</label>
-          <div class="col">
-            <input type="text" class="form-control">
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group col-6">
-        <div class="form-group row">
-          <label class="col-form-label right-column ">Breed:</label>
-          <div class="col pl-4">
-            <input type="text" class="form-control">
-          </div>
-        </div>
-      </div>
+    <div class=" d-flex justify-content-around input-area form-label">
+      <%= f.input   :gender,
+                    required: true,
+                    autofocus: true, label: "My sex:" %>
+      <%= f.input   :age,
+                    required: true,
+                    autofocus: true, label: "My age:" %>
     </div>
-  </form>
+    <div class=" d-flex justify-content-around input-area form-label">
+      <%= f.input   :traits,
+                    required: true,
+                    autofocus: true, label: "My unique traits:" %>
+      <%= f.input   :breed,
+                    required: true,
+                    autofocus: true, label: "My breed:" %>
+    </div>
+    <%= f.submit class: "btn btn-primary btn-new" %>
+    <% end %>
+  </div>
 </div>
+
