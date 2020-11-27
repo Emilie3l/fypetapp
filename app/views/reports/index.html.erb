@@ -1,39 +1,19 @@
 <div>
-  <div class="row dropdown-row">
-    <div class="dropdown-index">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Breed
-      </button>
-      
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">Beagle</a>
-        <a class="dropdown-item" href="#">Bulldog</a>
-        <a class="dropdown-item" href="#">Chihuahua</a>
+  <div class="container">
+  <div class="row search-index">
+      <div class="left col-sm-6 text-center">
       </div>
+      <div class="right col-sm-6 text-center">
+        <h2><%= @reports.length %> Pets Found Near You</h2>
+      </div>
+
   </div>
-
-  <div class="dropdown-index">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Color
-    </button>
-
-    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-      <a class="dropdown-item" href="#">Brown</a>
-      <a class="dropdown-item" href="#">Golden</a>
-      <a class="dropdown-item" href="#">Cream</a>
-      <a class="dropdown-item" href="#">Black</a>
-      <a class="dropdown-item" href="#">Grey</a>
-      <a class="dropdown-item" href="#">White</a>
-      <a class="dropdown-item" href="#">Other</a>
-    </div>
-  </div>
-
+</div>
   <div class="cardsmapcontainer">
-    
     <div class="cards-container">
       <div class="row">
         <% @reports.each do |report| %>
-          <div class="col-sm-6">
+          <div class="card-padding col-sm-12 col-lg-6">
             <div class="card">
               <img class="card-img-top" src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" alt="Card image top">
               <%= link_to report_path(report), class: 'card-link' do %>
@@ -50,7 +30,7 @@
 
     <div class="container map">
       <div id="map"
-        style="width: 100%; height: 600px;"
+        style="width: 100%; height: 500px;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>

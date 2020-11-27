@@ -7,9 +7,9 @@
   background-image: url('https://unsplash.com/photos/N04FIfHhv_k');
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 250px;
+  width: 100%;
   height: 250px;
-  margin: 0px 8px 25px -4px;
+  margin: 0px 8px 32px 13px;
   position: relative;
   border-radius: 8px;
   opacity: 1;
@@ -20,41 +20,114 @@
 }
 
 .card-text {
-  margin-top: 15px;
+  margin-top: 25px;
+  margin-left: 5px;
+}
+.card-img-top {
+  border-radius: 8px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
-.dropdown-index {
-  margin-left: 30px;
+.search-index {
   margin-top: 90px;
   margin-bottom: 90px;
 }
 
-.dropdown-row {
-  margin-left: 40px;
-}
-
 .name {
-  font-color: black;
+  color: black;
   font-family: $body-font;
   font-size: 15px;
   padding: 2px 16px;
+  line-height: 2px;
 }
 
 .address {
-  font-color: grey;
+  color: grey;
   font-family: $body-font;
   font-size: 15px;
   padding: 2px 16px;
 }
+.card-padding {
+ padding-left: 31px;
+ padding-bottom: 13px;
 
+}
 .cardsmapcontainer {
   display: flex;
   width: 100vw;
 }
-
+.cards-container {
+margin-left: 5px;
+}
 .map {
-  width: 50vw;
+  width: 55vw;
   height: 500px;
   position: sticky;
-  top: 10px;
+  top: 120px;
+  margin-left: 15px;
+  margin-right: 15px;
 }
+#map {
+   border-radius: 8px;
+   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+   width: 100%;
+   height: 600px;
+}
+.right {
+  margin-top: 100px;
+  margin-bottom: -30px;
+}
+
+@media only screen and (max-width: 768px) {
+    .cardsmapcontainer {
+    display: block;
+    width: 100vw;
+    height: fit-content;
+  }
+    .map {
+    width: 100vw;
+    height: fit-content;
+    position: static;
+  }
+    #map {
+      width: 100%;
+      height: 600px;
+    }
+    .cards-container {
+      display: none;
+      padding: 0px 20px 0px 20px;
+      width: 100vw;
+      text-align: center;
+    }
+    .search-index {
+      margin-top: 50px;
+      margin-bottom: 50px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
