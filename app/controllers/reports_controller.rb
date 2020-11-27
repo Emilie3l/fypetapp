@@ -18,9 +18,22 @@ class ReportsController < ApplicationController
   end
 
   def create
+    @report = Report.new(report_strong_params)
+
+    @pet = Pet.find(params[:pet_id])
+    @report.pet = @pet
+    @report.user = current_user
+
+    if @report.save
+      redirect_to reports_path
+    else
+      render "reports/new"
+    end
   end
 
   def new
+    @report = Report.new
+    @pet = Pet.find(params[:pet_id])
   end
 
   def show
@@ -34,5 +47,11 @@ class ReportsController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def report_strong_params
+    params.require(:report).permit(:address, :date, :reward_offered, :reward_amount)
   end
 end
