@@ -4,6 +4,6 @@ class Report < ApplicationRecord
 
   validates :user, :pet, :address, :date, presence: true
 
-  belongs_to :pet, dependent: :destroy
   belongs_to :user
+  belongs_to :pet
 end
