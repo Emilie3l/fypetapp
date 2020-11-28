@@ -4,7 +4,6 @@
 }
 
 .card {
-  background-image: url('https://unsplash.com/photos/N04FIfHhv_k');
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
   width: 100%;
@@ -23,16 +22,14 @@
   margin-top: 25px;
   margin-left: 5px;
 }
-.card-img-show {
-  border-bottom-right-radius: 0px;
-  border-bottom-left-radius: 0px;
-  height: 170px;
-}
+
 .card-img-top {
   border-radius: 8px;
   border-bottom-right-radius: 0px;
   border-bottom-left-radius: 0px;
   height: 170px;
+  background-size: cover;
+  background-position: center;
 }
 
 .search-index {
