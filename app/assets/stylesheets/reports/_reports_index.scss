@@ -20,7 +20,7 @@
 }
 
 .card-text {
-  margin-top: 25px;
+  margin-top: 15px;
   margin-left: 5px;
 }
 .card-img-show {
@@ -46,12 +46,13 @@
   font-size: 15px;
   padding: 2px 16px;
   line-height: 2px;
+  font-weight: bold;
 }
 
 .address {
   color: grey;
   font-family: $body-font;
-  font-size: 15px;
+  font-size: 13px;
   padding: 2px 16px;
 }
 .card-padding {
