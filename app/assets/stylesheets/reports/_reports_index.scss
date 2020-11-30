@@ -35,6 +35,9 @@
   height: 170px;
 }
 
+.card-img-map {
+  height: 80px;
+}
 .search-index {
   margin-top: 90px;
   margin-bottom: 90px;
@@ -131,7 +134,12 @@ margin-left: 5px;
   background-color: #5a7c94;
 }
 
+.mapboxgl-popup-content {
+  border-radius: 8px;
+}
+.popup-container {
 
+}
 @media only screen and (max-width: 768px) {
     .left-index {
     margin-top: 100px;
