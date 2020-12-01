@@ -113,7 +113,7 @@ users = [
   { first_name: "Christina",
     last_name: "Bowers",
     phone_number: "+528001234321",
-    address: "CDMX",
+    address: "Michoacán 18, 06100 Mexico City, Mexico",
     email: "chris@gmail.com",
     password: "test1234"
     },
@@ -199,7 +199,7 @@ end
 puts "Pets were created..."
 puts ""
 puts ""
-report_address = ["CDMX", "JALISCO", "NAYARIT", "CHIHUAHUA", "TABASCO", "EDO MEX", "SONORA"]
+report_address = ["06100, Cuauhtémoc, Mexico City, Mexico", "Paseo De La Reforma, 06500 Mexico City, Mexico" , "Guanajuato 54, 06700 Mexico City, Mexico", "Álvaro Obregón 213, 06700 Mexico City, Mexico", "Michoacán 134, 06170 Mexico City, Mexico", "Álvaro Obregón 120, 06700 Mexico City, Mexico", "Parque España, Av. Sonora, Mexico City, 06140, Mexico", "Nuevo León 144, 06100 Mexico City, Mexico", "Sinaloa 236, 06700 Mexico City, Mexico", "Agustín Melgar 6, 06140 Mexico City, Mexico", "Nuevo Vallarta Nayarit, Valle de Banderas, Nayarit 63735, Mexico", "Mikasa, San Luis Potosi 173, Mexico City, 06700, Mexico", "Del Salitre 115, Sta Maria Ahuacatlan, 51200 Valle de Bravo, Méx.", "Villahermosa, Tabasco, Mexico", "Havre 77, Juárez, Cuauhtémoc, 06600 Ciudad de México, CDMX", "Isabel La Católica 546, 03400 Mexico City, Mexico", "Arena México, Dr. Lavista 197, Mexico City, 06720, Mexico"]
 report_reward = [ 0, 100, 300, 200, 150, 500, 1000, 1500, 450 ]
 report_status = ["Missing", "Found", "Reunited"]
 

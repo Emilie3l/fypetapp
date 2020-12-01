@@ -1,2 +1,5 @@
-<h2><%= report.pet.name %></h2>
-<p><%= report.address %></p>
+<div class="popup-container">
+    <h2><%= report.pet.name %></h2>
+      <%= cl_image_tag report.pet.photo.key, crop: :fill, class: "card-img-map" %>
+      <p><%= report.address %></p>
+  </div>
