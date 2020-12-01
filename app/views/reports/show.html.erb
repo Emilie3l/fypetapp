@@ -1,80 +1,105 @@
-<h1>Reports Detail</h1>
-<div class="card-report">
-  <div class="card-report-basic">
-    <div class="card-report-frame">
-      <% if @report.status == "Missing" %>
-        <h2 style="background-color: rgba(255,0,0,0.9)"><i class="far fa-sad-cry"></i>
-      <% elsif @report.status == "Found" %>
-        <h2 style="background-color: rgba(0,128,0,0.9)"><i class="far fa-smile"></i>
-      <% else %>
-        <h2><i class="far fa-smile-beam"></i>
-      <% end %>
-        <%= @report.status %>
-      </h2>
-        <% if @report.pet.photo.attached? %>
-          <!--<%= cl_image_tag @report.pet.photo.key, crop: :fill, class: "card-img-show" %> -->
-          <div class="card-report-show-photo" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= cl_image_path @report.pet.photo.key %>')">
-          </div>
-        <% else %>
-          <div class="card-report-show-photo" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80')">
-          <!--
-          <img class="card-img-show" src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" alt="Card image top">
-          -->
-        <% end %>
-
-    </div>
-    <div class="card-report-description">
-      <h4><%= @report.pet.name %></h4><span><%= @report.pet.category.capitalize %></span>
-    </div>
-    <p><%= @report.pet.breed %></p>
-  </div>
-  <div class="card-report-details">
-    <h3>Details</h3>
-    <div class="report-fields">
-      <table class="table">
-        <tbody>
-          <tr>
-            <td><strong>Size:</strong></td>
-            <td><span><%= @report.pet.size %></span></td>
-          </tr>
-          <tr>
-            <td><strong>Color:</strong></td>
-            <td><span><%= @report.pet.color %></span></td>
-          </tr>
-          <tr>
-            <td><strong>Gender:</strong></td>
-            <td><span><%= @report.pet.gender %></span></td>
-          </tr>
-          <tr>
-            <td><strong>Age:</strong></td>
-            <td><span><%= @report.pet.age %></span></td>
-          </tr>
-          <tr>
-            <td><strong>Traits:</strong></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="2"><span><%= @report.pet.traits %></span></td>
-          </tr>
-          <tr>
-            <td><strong>Date Lost:</strong></td>
-            <td><span><%= @report.date.strftime('%a %b %d, %Y') %></span></td>
-          </tr>
-          <% if @report.reward_offered %>
-            <tr>
-              <td><strong>Reward:</strong></td>
-              <td><span><%= @report.reward_amount %></span></td>
-            </tr>
+<div class="container">
+  <div class="main-show">
+    
+    <div class="card-report">
+      <div class="card-report-basic">
+        <div class="card-report-frame">
+          <% if @report.status == "Missing" %>
+            <h2 class="missing"><i class="far fa-sad-cry"></i>
+          <% elsif @report.status == "Found" %>
+            <h2 class="found"><i class="far fa-smile"></i>
+          <% else %>
+            <h2><i class="far fa-smile-beam"></i>
           <% end %>
-          <tr>
-            <td><strong>Last seen on:</strong></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td colspan="2"><span><%= @report.address %></span></td>
-          </tr>
-        </tbody>
-      </table>
+            <%= @report.status %>
+          </h2>
+            <% if @report.pet.photo.attached? %>
+              <!--<%= cl_image_tag @report.pet.photo.key, crop: :fill, class: "card-img-show" %> -->
+              <div class="card-report-show-photo" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= cl_image_path @report.pet.photo.key %>')">
+              </div>
+            <% else %>
+              <div class="card-report-show-photo" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80')">
+              <!--
+              <img class="card-img-show" src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" alt="Card image top">
+              -->
+            <% end %>
+
+        </div>
+        <div class="card-report-description">
+          <h4><%= @report.pet.name %></h4><span><%= @report.pet.category.capitalize %></span>
+        </div>
+        <p><%= @report.pet.breed %></p>
+      </div>
+      <div class="card-report-details">
+        <h2 class="text-center">Report #<%= @report.id %></h2>
+        <div class="card-report-full-details">
+          <h3>Details
+            <% if user_signed_in? %>
+              <%= link_to "#" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+            <% end %>
+          </h3>
+          <div class="report-fields">
+            <table class="table">
+              <tbody>
+                <tr>
+                  <td><strong>Size:</strong></td>
+                  <td><span><%= @report.pet.size %></span></td>
+                </tr>
+                <tr>
+                  <td><strong>Color:</strong></td>
+                  <td><span><%= @report.pet.color %></span></td>
+                </tr>
+                <tr>
+                  <td><strong>Gender:</strong></td>
+                  <td><span><%= @report.pet.gender %></span></td>
+                </tr>
+                <tr>
+                  <td><strong>Age:</strong></td>
+                  <td><span><%= @report.pet.age %></span></td>
+                </tr>
+                <tr>
+                  <td><strong>Traits:</strong></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><span><%= @report.pet.traits %></span></td>
+                </tr>
+                <tr>
+                  <td><strong>Date Lost:</strong></td>
+                  <td><span><%= @report.date.strftime('%a %b %d, %Y') %></span></td>
+                </tr>
+                <% if @report.reward_offered %>
+                  <tr>
+                    <td><strong>Reward:</strong></td>
+                    <td><span><%= @report.reward_amount %></span></td>
+                  </tr>
+                <% end %>
+                <tr>
+                  <td><strong>Last seen on:</strong></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td colspan="2"><span><%= @report.address %></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="report-actions">
+            <%= link_to "Back", :back, class: "btn btn-primary btn-wide" %>
+            <% if user_signed_in? %>
+              <%= link_to "Unlist", "#", class: "btn btn-primary btn-wide" %>
+              <% if @report.status != "Reunited" %>
+                <%= link_to "Reunite", "#", class: "btn btn-primary btn-wide" %>
+              <% else %>
+                <%= link_to "Still Missing", "#", class: "btn btn-danger btn-wide" %>
+                <%= link_to "Still Found", "#", class: "btn btn-success btn-wide" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
