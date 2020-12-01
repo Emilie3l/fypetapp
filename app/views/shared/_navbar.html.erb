@@ -7,7 +7,6 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto fypet-navbar-nav">
         <li class="nav-item fypet-nav-item">
@@ -17,19 +16,9 @@
           <%= link_to "Current Reports", reports_path, class: "fypet-nav-link" %>
         </li>
       <% if user_signed_in? %>
-        <!-- <li class="nav-item fypet-nav-item active">
-          <%= link_to root_path, class: "fypet-nav-link" do %>
-            <i class="fas fa-home"></i><span>Home</span>
-          <% end %>
-        </li>
         <li class="nav-item fypet-nav-item">
-          <%= link_to "#", class: "fypet-nav-link" do %>
-            <i class="far fa-envelope"></i><span>Messages</span>
-          <% end %>
-        </li> -->
-        <li class="nav-item fypet-nav-item">
-          <%= link_to edit_user_registration_path, class: "fypet-nav-link" do %>
-            <i class="fas fa-user"></i><span>My Profile</span>
+          <%= link_to myreports_path, class: "fypet-nav-link" do %>
+            <i class="fas fa-user"></i><span>My Reports</span>
           <% end %>
         </li>
         <li class="nav-item fypet-nav-item">
@@ -38,11 +27,8 @@
           <% end %>
         </li>
       <% else %>
-        <!-- <li class="nav-item fypet-nav-item">
-          <%= link_to "Sign up",  new_user_registration_path, class: "fypet-nav-link" %>
-        </li> -->
         <li class="nav-item fypet-nav-item">
-          <%= link_to "My Reports", new_user_session_path, class: "fypet-nav-link" %>
+          <%= link_to "My Reports", myreports_path, class: "fypet-nav-link" %>
         </li>
       <% end %>
     </ul>

@@ -1,3 +1,7 @@
+.main-show {
+  margin-top: 90px;
+  padding-top: 0px;
+}
 .card-report {
   display: flex;
   width: 90%;
@@ -20,11 +24,17 @@
   text-align: center;
 }
 .card-report-frame > h2 {
-  background-color: $fypet-cto-color;
+  background-color: $primary;
   border-radius: 8px 8px 0 0;
   margin: 0;
   padding: 8px 0;
   color: white;
+}
+.card-report-frame > h2.missing {
+  background-color: $danger;
+}
+.card-report-frame > h2.found {
+  background-color: $success;
 }
 .card-report-show-photo {
   width: 100%;
@@ -53,6 +63,9 @@
   margin-bottom: 15px;
 }
 .card-report-details {
+
+}
+.card-report-full-details {
   flex-grow: 1;
   margin-left: 15px;
   border-radius: 8px;

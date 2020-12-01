@@ -27,7 +27,7 @@
   <div class="cardsmapcontainer">
     <div class="cards-container">
       <div class="row">
-        <% @reports.each do |report| %>
+        <% @reports.each_with_index do |report,index| %>
           <div class="card-padding col-sm-12 col-lg-6">
             <div class="card">
               <%= link_to report_path(report), class: 'card-link' do %>
@@ -48,6 +48,7 @@
         <% end %>
       </div>
     </div>
+
 
     <div class="container map">
       <div id="map"

@@ -3172,6 +3172,11 @@ file-loader@^4.2.0:
     loader-utils "^1.2.3"
     schema-utils "^2.5.0"
 
+file-upload-with-preview@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/file-upload-with-preview/-/file-upload-with-preview-4.1.0.tgz#cf3f9beaaf7126b4b2c4b5e98b7713ce3249df6b"
+  integrity sha512-teFi/J8fz/jEzeRIU8Y1FE6AdIDTgyQE63SFFslri1YwMFyk2Ne378A+hXJpFUuRo96AewWol58Qp9G8aKIXWQ==
+
 file-uri-to-path@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/file-uri-to-path/-/file-uri-to-path-1.0.0.tgz#553a7b8446ff6f684359c445f1e37a05dacc33dd"
