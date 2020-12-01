@@ -9,6 +9,20 @@
   padding: 10px;
   border-radius: 8px;
 }
+.card-report-show {
+    display: flex;
+    width: 90%;
+    margin: 15px auto;
+    padding: 10px;
+    border-radius: 8px;
+}
+.card-report-details-show {
+  flex-grow: 1;
+  margin-left: 15px;
+  border-radius: 8px;
+  background-color: rgba(255, 212, 207, 0.2);
+  padding: 10px;
+}
 .card-report-basic {
   flex: 0 0 40%;
   height: 100%;
@@ -52,7 +66,7 @@
   font-weight: bolder;
   margin-bottom: 0;
 }
-.card-report-description span { 
+.card-report-description span {
   font-family: $headers-font;
   font-weight: bold;
   font-size: 1.3rem;
@@ -75,6 +89,11 @@
 .card-report-details h3 {
   font-weight: bolder;
 }
+.my-reports {
+  margin-top: 195px;
+  margin-left: 85px;
+}
+
 .report-fields > table {
   border: none;
   td {
