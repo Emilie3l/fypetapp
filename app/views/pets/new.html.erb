@@ -1,18 +1,7 @@
-<div class="container card-large">
-  <div class="container">
-    <div class="col-4 img-card">
-      <div class="report-status"><p>Missing</p></div>
-      <div class="custom-file">
-        <input type="file" class="custom-file-input" id="customFile">
-        <label class="custom-file-label" for="customFile">Choose file</label>
-      </div>
-    </div>
-
-    <div class="col-12 pet-card">
-      <div>
-        <%= render "form" %>
-      </div>
-    </div>
+<div class="container">
+  <div class="main-form">
+    <h3>Pet Details for New Report</h3>
+    <p>In order to start a new report, we need the pet's info. Please fill up this form.</p>
+    <%= render 'pet_form' %>
   </div>
 </div>
-

@@ -9,6 +9,7 @@ class PetsController < ApplicationController
     if @pet.save
       redirect_to new_pet_report_path(@pet, @report)
     else
+      flash[:alert] = "Still fields without fill up."
       render "pets/new"
     end
   end
@@ -23,5 +24,3 @@ class PetsController < ApplicationController
     params.require(:pet).permit(:name, :category, :color, :size, :gender, :age, :traits, :breed, :photo)
   end
 end
-
-
