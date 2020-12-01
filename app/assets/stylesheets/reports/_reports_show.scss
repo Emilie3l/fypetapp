@@ -9,6 +9,20 @@
   padding: 10px;
   border-radius: 8px;
 }
+.card-report-show {
+    display: flex;
+    width: 90%;
+    margin: 15px auto;
+    padding: 10px;
+    border-radius: 8px;
+}
+.card-report-details-show {
+  flex-grow: 1;
+  margin-left: 15px;
+  border-radius: 8px;
+  background-color: rgba(255, 212, 207, 0.2);
+  padding: 10px;
+}
 .card-report-basic {
   flex: 0 0 40%;
   height: 100%;
@@ -76,7 +90,7 @@
   font-weight: bolder;
 }
 .my-reports {
-  margin-top: 280px;
+  margin-top: 195px;
   margin-left: 85px;
 }
 

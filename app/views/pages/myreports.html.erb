@@ -1,6 +1,6 @@
 <h1 class="my-reports">My Reports</h1>
 <% @reports.each do |report| %>
-<div class="card-report">
+<div class="card-report-show">
   <div class="card-report-basic">
     <div class="card-report-frame">
       <% if report.status == "Missing" %>
@@ -29,7 +29,7 @@
     </div>
     <p><%= report.pet.breed %></p>
   </div>
-  <div class="card-report-details">
+  <div class="card-report-details-show">
     <h3>Details</h3>
     <div class="report-fields">
       <table class="table">
