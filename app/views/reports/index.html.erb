@@ -1,16 +1,19 @@
 <div>
   <div class="container">
     <div class="row search-index">
-      <div class="left-index col-sm-4">
+      <div class="left-index col-sm-6">
         <%= form_tag reports_path, method: :get, id: "pet_filter" do %>
           <%= select_tag :category,
-            options_for_select([ "", "Dog", "Cat" ],
-              params[:category]),
-            class: "dropdown dropdown-filter"%>
+            options_for_select(["Dog", "Cat" ],
+            params[:category]),
+            prompt: "Pet type",
+            class: "dropdown dropdown-filter"
+          %>
 
           <%= select_tag :color,
             options_for_select([ "", "Black", "Brown", "Yellow", "Gold", "Grey", "Other", "Cream" ],
-              params[:color]),
+            params[:color]),
+            prompt: "Color",
             class: "dropdown dropdown-filter"
           %>
         <% end %>
@@ -21,7 +24,6 @@
       </div>
     </div>
   </div>
-</div>
 
   <div class="cardsmapcontainer">
     <div class="cards-container">
