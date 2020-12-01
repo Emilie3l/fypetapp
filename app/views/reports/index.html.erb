@@ -1,45 +1,25 @@
 <div>
   <div class="container">
-  <div class="row search-index">
-      <div class="left-index col-sm-6">
-        <div class="dropdown">
-          <button class="dropbtn">Category ▾</button>
-            <div class="dropdown-content">
-              <a href="#">Dog</a>
-              <a href="#">Cat</a>
-            </div>
-        </div>
-        <div class="dropdown">
-          <button class="dropbtn">Breed ▾</button>
-            <div class="dropdown-content">
-              <a href="#">Beagle</a>
-              <a href="#">Bulldog</a>
-              <a href="#">Chihuahua</a>
-              <a href="#">German Shepard</a>
-              <a href="#">Labrador</a>
-              <a href="#">Schnauzer</a>
-              <a href="#">Terrier</a>
-              <a href="#">Other</a>
-            </div>
-        </div>
-        <div class="dropdown">
-          <button class="dropbtn">Color ▾</button>
-            <div class="dropdown-content">
-              <a href="#">Black</a>
-              <a href="#">Brown</a>
-              <a href="#">Cream</a>
-              <a href="#">Gold</a>
-              <a href="#">Grey</a>
-              <a href="#">Yellow</a>
-              <a href="#">Other</a>
-            </div>
-        </div>
+    <div class="row search-index">
+      <div class="left-index col-sm-4">
+        <%= form_tag reports_path, method: :get, id: "pet_filter" do %>
+          <%= select_tag :category,
+            options_for_select([ "", "Dog", "Cat" ],
+              params[:category]),
+            class: "dropdown dropdown-filter"%>
+
+          <%= select_tag :color,
+            options_for_select([ "", "Black", "Brown", "Yellow", "Gold", "Grey", "Other", "Cream" ],
+              params[:color]),
+            class: "dropdown dropdown-filter"
+          %>
+        <% end %>
       </div>
-    <div class="right-index col-sm-6 text-center">
-      <h2><span style="color: #E6455A"><%= @reports.length %></span> Pets Found Near You</h2>
 
+      <div class="right-index col-sm-6 text-center">
+        <h2><span style="color: #E6455A"><%= @reports.length %></span> Pets Found Near You</h2>
+      </div>
     </div>
-
   </div>
 </div>
 
@@ -62,23 +42,6 @@
                   <h2 class="address"><%= report.address %></h2>
                 </div>
               <% end %>
-              <img class="card-img-top" src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" alt="Card image top">
-                  <%= link_to reports_path do %>
-                    <div class="card-text">
-                      <h2 class="name"><%= report.pet.name %></h2>
-                      <h2 class="address"><%= report.address %></h2>
-                    </div>
-                  <% end %>
-                  <!--
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=<%=".bd-example-modal-lg-#{index}" %>>Details</button>
-                  <div class=<%= "modal bd-example-modal-lg-#{index}" %> tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                            <%= render "show", report: report %>
-                      </div>
-                    </div>
-                  </div>
-                  -->
             </div>
           </div>
         <% end %>
