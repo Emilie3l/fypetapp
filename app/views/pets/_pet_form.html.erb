@@ -1,0 +1,40 @@
+<%= simple_form_for @pet do |f| %>
+  <%= f.input :category,
+               required: true,
+               collection: ['Dog', 'Cat'],
+               label: "Kind of pet",
+               placeholder: 'Dog or Cat',
+               hint: "Choose Dog or Cat from the list.",
+               autofocus: true %>
+  <%= f.input :name,
+               placeholder: "Pet's name (optional)",
+               hint: "If you know the pet's name, fill up this field." %>
+  <%= f.input :breed,
+               required: true,
+               placeholder: "Pet's breed.",
+               hint: "You should put a breed." %>
+  <%= f.input :size,
+               required: true,
+               collection: ['Small', 'Medium', 'Large'],
+               hint: "Choose a size from the list." %>
+  <%= f.input :color,
+               required: true,
+               placeholder: "Pet's color.",
+               hint: "It is important to provide a color." %>
+  <%= f.input :gender, as: :radio_buttons, 
+               collection: [['Female', 'Female'], ['Male', 'Male'], ['Unknown', 'Unknown']],
+               label_method: :second, value_method: :first,
+               hint: "It'll be better to know the pet's gender." %>
+  <%= f.input :age,
+               placeholder: "Pet's age (optional)",
+               hint: "This could be an stimated age." %>
+  <%= f.input :traits,
+               placeholder: "Particular traits (optional)",
+               hint: "Something unique for this pet." %>
+  <%= f.input :photo, as: :file,
+               required: true,
+               label: "Upload photo:",
+               placeholder: "Photo in here please.",
+               hint: "In order to anyone help you we need a photo." %>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>

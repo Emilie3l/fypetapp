@@ -1,0 +1,25 @@
+<%= simple_form_for [@pet, @report] do |f| %>
+  <%= f.input :status, 
+               autofocus: true,
+               required: true,
+               collection: ['Missing', 'Found'],
+               label: "Kind of report",
+               placeholder: "Choose Missing or Found",
+               hint: "Select one option from the list." %>
+  <%= f.input :date, as: :date,
+               required: true,
+               html5: true,
+               input_html: { value: Date.today },
+               label: "When did it happen?",
+               hint: "Select the date the event happened." %>
+  <%= f.input :address, as: :text,
+               required: true %>
+  <%= f.input :reward_offered, as: :boolean,
+               required: true,
+               checked_value: true, unchecked_value: false,
+               boolean_style: :inline,
+               hint: "Check to set a reward amount." %>
+  <%= f.input :reward_amount, as: :string,
+               disabled: true %>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>

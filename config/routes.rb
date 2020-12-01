@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :pets, only: [:create, :new] do
-    resources :reports, only: [:create, :new, :update, :edit]
+    resources :reports, only: [:create, :new]
   end
-  resources :reports, only: [:show, :destroy, :index]
+  resources :reports, only: [:index, :show, :update, :edit, :destroy]
 end
