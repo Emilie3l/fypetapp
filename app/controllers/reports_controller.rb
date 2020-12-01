@@ -3,11 +3,15 @@ class ReportsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    if params[:category].present?
-      results = Report.joins(:pet).where("pets.category ILIKE ?", params[:category])
-    end
+    results = Report.all
 
-    if params[:color].present?
+    if params[:category].present? && params[:color].present?
+      results = Report.joins(:pet).where("pets.category ILIKE ? AND pets.color ILIKE ?", params[:category], params[:color])
+
+    elsif params[:category].present?
+      results = Report.joins(:pet).where("pets.category ILIKE ?", params[:category])
+
+    elsif params[:color].present?
       results = Report.joins(:pet).where("pets.color ILIKE ?", params[:color])
     end
 
