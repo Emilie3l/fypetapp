@@ -52,7 +52,7 @@
   font-weight: bolder;
   margin-bottom: 0;
 }
-.card-report-description span { 
+.card-report-description span {
   font-family: $headers-font;
   font-weight: bold;
   font-size: 1.3rem;
@@ -75,6 +75,11 @@
 .card-report-details h3 {
   font-weight: bolder;
 }
+.my-reports {
+  margin-top: 280px;
+  margin-left: 85px;
+}
+
 .report-fields > table {
   border: none;
   td {
