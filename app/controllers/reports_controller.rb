@@ -5,14 +5,17 @@ class ReportsController < ApplicationController
   def index
     results = Report.all
 
-    if params[:category].present? && params[:color].present?
-      results = Report.joins(:pet).where("pets.category ILIKE ? AND pets.color ILIKE ?", params[:category], params[:color])
+    if params[:category].present? && params[:color].present? && params[:breed].present?
+      results = Report.joins(:pet).where("pets.category ILIKE ? AND pets.color ILIKE ? AND pets.breed ILIKE ? ", params[:category], params[:color], params[:breed])
 
     elsif params[:category].present?
       results = Report.joins(:pet).where("pets.category ILIKE ?", params[:category])
 
     elsif params[:color].present?
       results = Report.joins(:pet).where("pets.color ILIKE ?", params[:color])
+
+    elsif params[:breed].present?
+      results = Report.joins(:pet).where("pets.breed ILIKE ?", params[:breed])
     end
 
     if user_signed_in?

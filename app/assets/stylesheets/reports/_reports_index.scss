@@ -85,10 +85,12 @@
 .right-index {
   margin-top: 100px;
   margin-bottom: -30px;
+  margin-left: 50px;
 }
 .left-index {
   margin-top: 100px;
   margin-bottom: -30px;
+  margin-left: 0;
 }
 .dropbtn {
   background-color: #124A72;
@@ -142,9 +144,10 @@
 }
 @media only screen and (max-width: 768px) {
     .left-index {
-    margin-top: 100px;
+    margin-top: 80px;
     margin-bottom: -30px;
     display: none;
+    margin-left: 0;
   }
     .cardsmapcontainer {
     display: block;
@@ -175,16 +178,14 @@
 .dropdown-filter {
   background-color: #124A72;
   color: white;
-  padding: 15px 45px;
+  padding: 15px 35px;
   font-size: 16px;
   border: none;
   cursor: pointer;
   border-radius: 8px;
+  max-width: 150px;
+  text-align: center;
 }
-
-
-
-
 
 
 

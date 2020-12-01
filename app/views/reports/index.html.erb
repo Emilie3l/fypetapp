@@ -1,22 +1,32 @@
 <div>
   <div class="container">
     <div class="row search-index">
-      <div class="left-index col-sm-4">
+      <div class="left-index">
         <%= form_tag reports_path, method: :get, id: "pet_filter" do %>
           <%= select_tag :category,
-            options_for_select([ "", "Dog", "Cat" ],
-              params[:category]),
-            class: "dropdown dropdown-filter"%>
+            options_for_select([ "Dog", "Cat" ],
+            params[:category]),
+            prompt: "Pet type",
+            class: "dropdown dropdown-filter pl-5"
+          %>
 
           <%= select_tag :color,
-            options_for_select([ "", "Black", "Brown", "Yellow", "Gold", "Grey", "Other", "Cream" ],
-              params[:color]),
+            options_for_select([ "Black", "Brown", "Cream", "Gold", "Grey", "Other" ],
+            params[:color]),
+            prompt: "Color",
             class: "dropdown dropdown-filter"
+          %>
+
+          <%= select_tag :breed,
+            options_for_select([ "Beagle", "Bulldog", "Labrador", "Chihuahua", "German Shepherd", "Pug", "Golden Retriever", "Poodle", "Border Collie", "Yorkshire Terrier", "Dachshund", "Spaniel", "Shih Tzu", "Boxer", "Bull Terrier", "Husky", "Corgi", "Dobermann", "Great Dane", "Pomenarian", "Dalmatian", "Other" ],
+            params[:breed]),
+            prompt: "Breed",
+            class: "dropdown dropdown-filter pl-5"
           %>
         <% end %>
       </div>
 
-      <div class="right-index col-sm-6 text-center">
+      <div class="right-index text-center">
         <h2><span style="color: #E6455A"><%= @reports.length %></span> Pets Found Near You</h2>
       </div>
     </div>
