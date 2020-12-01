@@ -46,9 +46,10 @@
   <div class="cardsmapcontainer">
     <div class="cards-container">
       <div class="row">
-        <% @reports.each do |report| %>
+        <% @reports.each_with_index do |report,index| %>
           <div class="card-padding col-sm-12 col-lg-6">
             <div class="card">
+<<<<<<< Updated upstream
               <%= link_to report_path(report), class: 'card-link' do %>
                 <% if report.pet.photo.attached? %>
                   <div class="card-img-top" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= cl_image_path report.pet.photo.key %>')">
@@ -62,11 +63,31 @@
                   <h2 class="address"><%= report.address %></h2>
                 </div>
               <% end %>
+=======
+              <img class="card-img-top" src="https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80" alt="Card image top">
+                  <%= link_to reports_path do %>
+                    <div class="card-text">
+                      <h2 class="name"><%= report.pet.name %></h2>
+                      <h2 class="address"><%= report.address %></h2>
+                    </div>
+                  <% end %> 
+                  <!--                                                    
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=<%=".bd-example-modal-lg-#{index}" %>>Details</button>
+                  <div class=<%= "modal bd-example-modal-lg-#{index}" %> tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                            <%= render "show", report: report %>
+                      </div>
+                    </div>
+                  </div>
+                  -->
+>>>>>>> Stashed changes
             </div>
           </div>
         <% end %>
       </div>
     </div>
+
 
     <div class="container map">
       <div id="map"
