@@ -1,32 +1,42 @@
-require 'open-uri'
-require 'nokogiri'
-require 'csv'
+# require 'open-uri'
+# require 'nokogiri'
 
-url = "https://ayudandopatitas.com/cdmx/"
+# url = "https://ayudandopatitas.com/cdmx/"
 
-html_file = open(url).read
-response = Nokogiri::HMTL(html_file)
+# html_file = open(url).read
+# response = Nokogiri::HTML(html_file)
 
-response.search('.post-excerpt').each do |element|
-  description = element.search('.descripcion-corta')
-  location = element.search('.font11')
-  picture = element.search('.lazy')
-  month = element.search('.month')
-  day = element.search('.day')
-  year = element.search('.year')
-  date = "#{day}#{month}#{year}"
-  post = "#{description}#{date}#{location}"
-  puts post.text
-end
+# response.search('.post-excerpt').each do |element|
+#   description = element.search('.descripcion-corta').text
+#   location = element.search('.font11').text.squeeze(" ").gsub("\n",'').strip.split(",")[2..-1].join
+#   picture = element.search('.lazy').text
+#   month = element.search('.month').text.squeeze(" ").gsub("\n",'')
+#   day = element.search('.day').text.squeeze(" ").gsub("\n",'').strip.split(",").join
+#   year = element.search('.year').text.squeeze(" ").gsub("\n",'').strip.split(",").join
+#   date = "#{day}#{month}#{year}"
+#   Report.create(traits: description, date: date, address: location)
+# end
 
-  Post.create(traits: description, date: date, address: location)
+#require 'open-uri'
+#require 'nokogiri'
+#require 'csv'
 
+#url = "https://ayudandopatitas.com/cdmx/"
 
+#html_file = open(url).read
+#response = Nokogiri::HMTL(html_file)
 
+#response.search('.post-excerpt').each do |element|
+#  description = element.search('.descripcion-corta')
+#  location = element.search('.font11')
+#  picture = element.search('.lazy')
+#  month = element.search('.month')
+#  day = element.search('.day')
+#  year = element.search('.year')
+#  date = "#{day}#{month}#{year}"
+#  post = "#{description}#{date}#{location}"
+#  puts post.text
+#end
 
-[12] pry(main)> parsed_html.search('.post-excerpt').each do |post|
-[12] pry(main)*   post.search('.date')
-[12] pry(main)*   description = post.search('.description')
-[12] pry(main)*   Post.create(info: description, date: date)
-[12] pry(main)*   mont = post.search('.month')
-[12] pry(main)*   "#{day}#{month}#{year}"
+#  Post.create(traits: description, date: date, address: location)
+
