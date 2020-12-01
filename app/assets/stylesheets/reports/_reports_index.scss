@@ -36,7 +36,8 @@
 }
 
 .card-img-map {
-  height: 80px;
+  width: 128px;
+  margin-left: -10px;
 }
 .search-index {
   margin-top: 90px;
@@ -68,7 +69,7 @@
   width: 100vw;
 }
 .cards-container {
-margin-left: 5px;
+  margin-left: 5px;
 }
 .map {
   width: 55vw;
@@ -136,6 +137,8 @@ margin-left: 5px;
 
 .mapboxgl-popup-content {
   border-radius: 8px;
+  width: 175px;
+  text-align: center;
 }
 .popup-container {
 
