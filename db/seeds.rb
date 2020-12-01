@@ -199,7 +199,31 @@ end
 puts "Pets were created..."
 puts ""
 puts ""
-report_address = ["06100, Cuauhtémoc, Mexico City, Mexico", "Paseo De La Reforma, 06500 Mexico City, Mexico" , "Guanajuato 54, 06700 Mexico City, Mexico", "Álvaro Obregón 213, 06700 Mexico City, Mexico", "Michoacán 134, 06170 Mexico City, Mexico", "Álvaro Obregón 120, 06700 Mexico City, Mexico", "Parque España, Av. Sonora, Mexico City, 06140, Mexico", "Nuevo León 144, 06100 Mexico City, Mexico", "Sinaloa 236, 06700 Mexico City, Mexico", "Agustín Melgar 6, 06140 Mexico City, Mexico", "Nuevo Vallarta Nayarit, Valle de Banderas, Nayarit 63735, Mexico", "Mikasa, San Luis Potosi 173, Mexico City, 06700, Mexico", "Del Salitre 115, Sta Maria Ahuacatlan, 51200 Valle de Bravo, Méx.", "Villahermosa, Tabasco, Mexico", "Havre 77, Juárez, Cuauhtémoc, 06600 Ciudad de México, CDMX", "Isabel La Católica 546, 03400 Mexico City, Mexico", "Arena México, Dr. Lavista 197, Mexico City, 06720, Mexico"]
+report_address = ["06100, Cuauhtémoc, Mexico City, Mexico", 
+                  "Paseo De La Reforma, 06500 Mexico City, Mexico",
+                  "Guanajuato 54, 06700 Mexico City, Mexico",
+                  "Álvaro Obregón 213, 06700 Mexico City, Mexico",
+                  "Michoacán 134, 06170 Mexico City, Mexico",
+                  "Álvaro Obregón 120, 06700 Mexico City, Mexico",
+                  "Parque España, Av. Sonora, Mexico City, 06140, Mexico",
+                  "Nuevo León 144, 06100 Mexico City, Mexico",
+                  "Sinaloa 236, 06700 Mexico City, Mexico",
+                  "Agustín Melgar 6, 06140 Mexico City, Mexico",
+                  "Nuevo Vallarta Nayarit, Valle de Banderas, Nayarit 63735, Mexico",
+                  "Mikasa, San Luis Potosi 173, Mexico City, 06700, Mexico",
+                  "Del Salitre 115, Sta Maria Ahuacatlan, 51200 Valle de Bravo, Méx.",
+                  "Villahermosa, Tabasco, Mexico",
+                  "Havre 77, Juárez, Cuauhtémoc, 06600 Ciudad de México, CDMX",
+                  "Isabel La Católica 546, 03400 Mexico City, Mexico",
+                  "Arena México, Dr. Lavista 197, Mexico City, 06720, Mexico",
+                  "345 Av Jacarandas, Tepic, Nayarit",
+                  "450 Av Allende, Tepic, Nayarit",
+                  "987 Av Insurgentes, Tepic, Nayarit",
+                  "87 Rio Missisipi, Tepic, Nayarit",
+                  "45 Bucerias, Tepic, Nayarit",
+                  "34 Madre Perla, Tepic, Nayarit",
+                  "18 Calle 2, Tepic, Nayarit",
+                  "27 Estrella de Mar, Tepic, Nayarit" ]
 report_reward = [ 0, 100, 300, 200, 150, 500, 1000, 1500, 450 ]
 report_status = ["Missing", "Found", "Reunited"]
 
