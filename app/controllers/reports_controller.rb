@@ -3,19 +3,25 @@ class ReportsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    if user_signed_in? && current_user.address
-      # @user_address = current_user.address
-      @reports = Report.geocoded.near(current_user.address, 5).order('created_at DESC')
-    else
-      @reports = Report.geocoded.order('created_at DESC')
+    results = Report.all
+
+    if params[:category].present? && params[:color].present?
+      results = Report.joins(:pet).where("pets.category ILIKE ? AND pets.color ILIKE ?", params[:category], params[:color])
+
+    elsif params[:category].present?
+      results = Report.joins(:pet).where("pets.category ILIKE ?", params[:category])
+
+    elsif params[:color].present?
+      results = Report.joins(:pet).where("pets.color ILIKE ?", params[:color])
     end
-    
-    #if params[:query].present?
-     #results = Geocoder.search(params[:query.to_s])
-     #Report.geocoded.near(results)
-      #@reports = Report.where(address: params[:query])
-    #end
-    
+
+    if user_signed_in?
+      @user_address = current_user.address
+      @reports = results.geocoded.near(@user_address, 50)
+    else
+      @reports = results.geocoded.order('created_at DESC')
+    end
+
     @markers = @reports.map do |report|
       {
         lat: report.latitude,
