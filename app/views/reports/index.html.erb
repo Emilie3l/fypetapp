@@ -6,8 +6,7 @@
           <%= select_tag :category,
             options_for_select([ "", "Dog", "Cat" ],
               params[:category]),
-            class: "dropdown dropdown-filter"
-          %>
+            class: "dropdown dropdown-filter"%>
 
           <%= select_tag :color,
             options_for_select([ "", "Black", "Brown", "Yellow", "Gold", "Grey", "Other", "Cream" ],
