@@ -3,9 +3,9 @@ class ReportsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
-    if user_signed_in?
-      @user_address = current_user.address
-      @reports = Report.geocoded.near(@user_address, 50).order('created_at DESC')
+    if user_signed_in? && current_user.address
+      # @user_address = current_user.address
+      @reports = Report.geocoded.near(current_user.address, 5).order('created_at DESC')
     else
       @reports = Report.geocoded.order('created_at DESC')
     end

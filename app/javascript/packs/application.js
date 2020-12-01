@@ -24,7 +24,6 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import FileUploadWithPreview from "file-upload-with-preview";
 
 // Internal imports, e.g:
 import { initMapbox } from '../plugins/init_mapbox';
@@ -32,7 +31,6 @@ import { initMapbox } from '../plugins/init_mapbox';
 // import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { initEnableDisableReward } from '../components/create_report';
-import { initFileUploadWithPreview } from '../plugins/init_upload_preview';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -40,5 +38,4 @@ document.addEventListener('turbolinks:load', () => {
   initUpdateNavbarOnScroll();
   initMapbox();
   initEnableDisableReward();
-  initFileUploadWithPreview();
 });
