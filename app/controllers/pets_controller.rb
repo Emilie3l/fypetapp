@@ -20,7 +20,7 @@ class PetsController < ApplicationController
   private
 
   def pet_strong_params
-    params.require(:pet).permit(:name, :category, :color, :size, :gender, :age, :traits, :breed)
+    params.require(:pet).permit(:name, :category, :color, :size, :gender, :age, :traits, :breed, :photo)
   end
 end
 

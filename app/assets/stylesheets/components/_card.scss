@@ -46,12 +46,16 @@
   background: white;
   box-shadow: 0 0 15px rgba($text-headers-color,0.35);
   border-radius: 8px;
+  opacity: 1;
 }
-
-.card-pet > img {
-  height: 300px;
+.card-pet:hover {
+  opacity: 0.7;
+}
+.card-pet-img {
+  height: 400px;
   width: 100%;
-  object-fit: cover;
+  background-size: cover;
+  background-position: center;
 }
 
 .card-pet h2 {
