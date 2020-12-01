@@ -37,13 +37,7 @@
       </div>
     <div class="right-index col-sm-6 text-center">
       <h2><span style="color: #E6455A"><%= @reports.length %></span> Pets Found Near You</h2>
-      <%= form_tag reports_path, method: :get do %>
-       <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a missing pet"%>
-      <%= submit_tag "Search", class: "btn btn-primary" %>
-      <% end %>
+
     </div>
 
   </div>
