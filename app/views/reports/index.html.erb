@@ -1,22 +1,21 @@
 <div>
   <div class="container">
     <div class="row search-index">
-        <div class="left-index col-sm-6">
-          <%= form_tag reports_path, method: :get, id: "pet_filter" do %>
-            <%= select_tag :category,
-              options_for_select([ "", "Dog", "Cat" ],
-                params[:category]),
-              class: "dropdown dropdown-filter"
-            %>
+      <div class="left-index col-sm-4">
+        <%= form_tag reports_path, method: :get, id: "pet_filter" do %>
+          <%= select_tag :category,
+            options_for_select([ "", "Dog", "Cat" ],
+              params[:category]),
+            class: "dropdown dropdown-filter"
+          %>
 
-            <%= select_tag :color,
-              options_for_select([ "", "Black", "Brown", "Yellow", "Gold", "Grey", "Other", "Cream" ],
-                params[:color]),
-              class: "dropdown dropdown-filter"
-            %>
-
-          <% end %>
-        </div>
+          <%= select_tag :color,
+            options_for_select([ "", "Black", "Brown", "Yellow", "Gold", "Grey", "Other", "Cream" ],
+              params[:color]),
+            class: "dropdown dropdown-filter"
+          %>
+        <% end %>
+      </div>
 
       <div class="right-index col-sm-6 text-center">
         <h2><span style="color: #E6455A"><%= @reports.length %></span> Pets Found Near You</h2>
