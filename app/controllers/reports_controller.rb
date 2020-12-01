@@ -1,12 +1,20 @@
 class ReportsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :index, :show, :new, :create ]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
 
   def index
-    @reports = Report.geocoded
-    # if user_signed_in?
-    #   @user_address = current_user.address
-    # end
-    # @reports = @reports.near(@user_address, 100)
+
+    #if params[:query].present?
+     #results = Geocoder.search(params[:query.to_s])
+     #Report.geocoded.near(results)
+      #@reports = Report.where(address: params[:query])
+    #end
+
+    if user_signed_in?
+      @user_address = current_user.address
+      @reports = Report.geocoded.near(@user_address, 50)
+    else
+      @reports = Report.geocoded
+    end
     @markers = @reports.map do |report|
       {
         lat: report.latitude,

@@ -19,7 +19,7 @@
 }
 
 .card-text {
-  margin-top: 25px;
+  margin-top: 15px;
   margin-left: 5px;
 }
 
@@ -32,6 +32,10 @@
   background-position: center;
 }
 
+.card-img-map {
+  width: 128px;
+  margin-left: -10px;
+}
 .search-index {
   margin-top: 90px;
   margin-bottom: 90px;
@@ -43,12 +47,13 @@
   font-size: 15px;
   padding: 2px 16px;
   line-height: 2px;
+  font-weight: bold;
 }
 
 .address {
   color: grey;
   font-family: $body-font;
-  font-size: 15px;
+  font-size: 13px;
   padding: 2px 16px;
 }
 .card-padding {
@@ -61,7 +66,7 @@
   width: 100vw;
 }
 .cards-container {
-margin-left: 5px;
+  margin-left: 5px;
 }
 .map {
   width: 55vw;
@@ -127,7 +132,14 @@ margin-left: 5px;
   background-color: #5a7c94;
 }
 
+.mapboxgl-popup-content {
+  border-radius: 8px;
+  width: 175px;
+  text-align: center;
+}
+.popup-container {
 
+}
 @media only screen and (max-width: 768px) {
     .left-index {
     margin-top: 100px;
