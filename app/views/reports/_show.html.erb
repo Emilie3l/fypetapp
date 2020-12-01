@@ -2,6 +2,7 @@
 <div class="card-report">
   <div class="card-report-basic">
     <div class="card-report-frame">
+      <% @reports.each do |report| %>
       <% if report.status == "Missing" %>
         <h2 style="background-color: rgba(255,0,0,0.9)"><i class="far fa-sad-cry"></i>
       <% elsif report.status == "Found" %>
@@ -12,13 +13,17 @@
         <%= report.status %>
       </h2>
       <img src="https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1534&q=80" />
+      <% end %>
     </div>
     <div class="card-report-description">
+      <% @reports.each do |report| %>
       <h4><%= report.pet.name %></h4><span><%= report.pet.category.capitalize %></span>
     </div>
     <p><%= report.pet.breed %></p>
+    <% end %>
   </div>
   <div class="card-report-details">
+    <% @reports.each do |report| %>
     <h3>Details</h3>
     <div class="report-fields">
       <table class="table">
@@ -66,5 +71,5 @@
         </tbody>
       </table>
     </div>
+    <% end %>
   </div>
-</div>
