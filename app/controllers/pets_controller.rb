@@ -2,9 +2,10 @@ class PetsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :create, :new ]
 
   def create
-    @report = Report.new
-
     @pet = Pet.new(pet_strong_params)
+    authorize @pet
+
+    @report = Report.new
 
     if @pet.save
       redirect_to new_pet_report_path(@pet, @report)
@@ -16,6 +17,7 @@ class PetsController < ApplicationController
 
   def new
     @pet = Pet.new
+    authorize @pet
   end
 
   private

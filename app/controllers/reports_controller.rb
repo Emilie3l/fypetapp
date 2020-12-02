@@ -2,9 +2,11 @@ class ReportsController < ApplicationController
   before_action :set_pet, only: [:new, :create]
   before_action :set_report, only: [:update]
   skip_before_action :authenticate_user!, only: [ :index, :show ]
+  
+  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
-    results = Report.all
+    results = policy_scope(Report)
 
     if params[:category].present? && params[:color].present? && params[:breed].present?
       results = Report.joins(:pet).where("pets.category ILIKE ? AND pets.color ILIKE ? AND pets.breed ILIKE ? ", params[:category], params[:color], params[:breed])
@@ -47,6 +49,8 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.new(report_strong_params)
+    authorize @report
+
     @report.pet = @pet
     @report.user = current_user
 
@@ -62,10 +66,12 @@ class ReportsController < ApplicationController
   def new
     @report = Report.new
     @report.pet = @pet
+    authorize @report
   end
 
   def show
     @report = Report.find(params[:id])
+    authorize @report
   end
 
   def edit
@@ -103,5 +109,11 @@ class ReportsController < ApplicationController
   def set_report
     report_id = params.require(:id)
     @report = Report.find(report_id)
+    authorize @report
+  end
+
+  def user_not_authorized
+    flash[:alert] = "You can modify your own reports."
+    redirect_to(report_path)
   end
 end
