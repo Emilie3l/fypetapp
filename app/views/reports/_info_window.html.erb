@@ -2,4 +2,5 @@
     <h2><%= report.pet.name %></h2>
       <%= cl_image_tag report.pet.photo.key, crop: :fill, class: "card-img-map" %>
       <p><%= report.address %></p>
+      <%= link_to "Details", "reports/#{report.id}", class: "btn btn-primary btn-wide" %>
   </div>

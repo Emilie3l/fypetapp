@@ -44,10 +44,13 @@
   padding: 8px 0;
   color: white;
 }
+.card-report-frame > h2.reunited {
+  background-color: $primary;
+}
 .card-report-frame > h2.missing {
   background-color: $danger;
 }
-.card-report-frame > h2.found {
+.card-report-frame > h2.lost {
   background-color: $success;
 }
 .card-report-show-photo {

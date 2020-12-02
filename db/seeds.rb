@@ -16,6 +16,14 @@ def generate_pet_gender
   rand(8..10) == 10 ? "Female" : "Male"
 end
 
+def generate_report_reunited
+  rand(8..10) == 10 ? false : true
+end
+
+def generate_report_status
+  rand(7..10) == 10 ? "Lost" : "Missing"
+end
+
 def get_pet_name(gender)
   gender == "Male" ? get_male_pet_name : get_female_pet_name
 end
@@ -173,7 +181,7 @@ all_cat_breeds = fetch_cat_breeds
 puts ""
 puts ""
 puts "Creating some pets..."
-100.times do
+50.times do
   pet = Pet.new
   pet.category = generate_pet_category
   pet.gender = generate_pet_gender
@@ -205,34 +213,48 @@ report_address = ["06100, Cuauhtémoc, Mexico City, Mexico",
                   "Álvaro Obregón 213, 06700 Mexico City, Mexico",
                   "Michoacán 134, 06170 Mexico City, Mexico",
                   "Álvaro Obregón 120, 06700 Mexico City, Mexico",
-                  "Parque España, Av. Sonora, Mexico City, 06140, Mexico",
+                  "Luis Donaldo Colosio, Tepic, Nayarit, Mexico",
                   "Nuevo León 144, 06100 Mexico City, Mexico",
                   "Sinaloa 236, 06700 Mexico City, Mexico",
                   "Agustín Melgar 6, 06140 Mexico City, Mexico",
-                  "Nuevo Vallarta Nayarit, Valle de Banderas, Nayarit 63735, Mexico",
-                  "Mikasa, San Luis Potosi 173, Mexico City, 06700, Mexico",
-                  "Del Salitre 115, Sta Maria Ahuacatlan, 51200 Valle de Bravo, Méx.",
+                  "Camino a Los Metates 225, Tepic, Nayarit, Mexico",
+                  "Jacarandas 88, Tepic, Nayarit, Mexico",
+                  "Brasil 234, Tepic, Nayarit, Mexico",
                   "Villahermosa, Tabasco, Mexico",
-                  "Havre 77, Juárez, Cuauhtémoc, 06600 Ciudad de México, CDMX",
+                  "Ricardo Flores Magón 450, 63197 Tepic, Nayarit, Mexico",
                   "Isabel La Católica 546, 03400 Mexico City, Mexico",
-                  "Arena México, Dr. Lavista 197, Mexico City, 06720, Mexico",
+                  "Guadalupe 235, 45040 Zapopan, Jalisco, Mexico",
                   "345 Av Jacarandas, Tepic, Nayarit",
-                  "450 Av Allende, Tepic, Nayarit",
+                  "Zapopan 321, Tepic, Nayarit, Mexico",
                   "987 Av Insurgentes, Tepic, Nayarit",
-                  "87 Rio Missisipi, Tepic, Nayarit",
+                  "Madre Perla 84, Tepic, Nayarit, Mexico",
                   "45 Bucerias, Tepic, Nayarit",
                   "34 Madre Perla, Tepic, Nayarit",
                   "18 Calle 2, Tepic, Nayarit",
-                  "27 Estrella de Mar, Tepic, Nayarit" ]
+                  "27 Estrella de Mar, Tepic, Nayarit",
+                  "León Norte 125, Tepic, Nayarit, Mexico",
+                  "Bucerias, Tepic, Nayarit, Mexico",
+                  "Langosta, Tepic, Nayarit, Mexico",
+                  "Abasolo 34, 63500 Tepic, Nayarit, Mexico" ]
 report_reward = [ 0, 100, 300, 200, 150, 500, 1000, 1500, 450 ]
-report_status = ["Missing", "Found", "Reunited"]
 
 puts "Creating some reports"
 Pet.all.each do |pet|
   report = Report.new
   report.address = report_address.sample
   report.date = Date.today - (rand * 63)
-  report.status = report_status.sample
+  report.status = generate_report_status
+  report.reunited = generate_report_reunited
+  if report.reunited
+    reunited_date = report.date + (rand * 35)
+    if reunited_date > Date.today
+      reunited_date = Date.today - (rand * 8)
+      if reunited_date < report.date
+        reunited_date = report.date + (rand * 3)
+      end
+    end
+  end
+  report.reunited_date = reunited_date
   report.reward_amount = report_reward.sample
   report.reward_offered = report.reward_amount != 0
   report.user = User.all.sample
