@@ -20,7 +20,12 @@ class ReportsController < ApplicationController
 
     if user_signed_in?
       @user_address = current_user.address
-      @reports = results.geocoded.near(@user_address, 50)
+      if params[:query]
+        result = Geocoder.search(params[:query])&.first&.coordinates
+        @reports = results.geocoded.near(result, 100)
+      else
+        @reports = results.geocoded.near(@user_address, 100)
+      end
     else
       @reports = results.geocoded.order('created_at DESC')
     end
