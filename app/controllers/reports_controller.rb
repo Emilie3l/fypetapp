@@ -71,7 +71,6 @@ class ReportsController < ApplicationController
     reunited = params.require(:reunited)
     flash_show = reunited == "true" ? "Reunited" : "Un-Reunited"
     reunited_date = reunited == "true" ? Date.today : nil
-    
     @report.reunited = reunited
     @report.reunited_date = reunited_date
 

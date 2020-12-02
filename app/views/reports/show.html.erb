@@ -72,7 +72,7 @@
                   <td><strong><%= @report.status %> Date:</strong></td>
                   <td><span><%= @report.date.strftime('%a %b %d, %Y') %></span></td>
                 </tr>
-                <% if @report.reunited %>
+                <% if @report.reunited_date %>
                   <tr>
                     <td><strong>Reunited Date:</strong></td>
                     <td><span><%= @report.reunited_date.strftime('%a %b %d, %Y') %></span></td>

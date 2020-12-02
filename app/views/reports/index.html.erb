@@ -10,15 +10,23 @@
             class: "dropdown dropdown-filter pl-5"
           %>
 
+          <% available_colors = Pet.select(:color).distinct.map { |pet| pet.color } %>
           <%= select_tag :color,
-            options_for_select([ "Black", "Brown", "Cream", "Gold", "Grey", "Other" ],
+            options_for_select(available_colors,
             params[:color]),
             prompt: "Color",
             class: "dropdown dropdown-filter"
           %>
 
+          <% 
+            if params[:category]
+              available_breeds = Pet.where(category: params[:category]).select(:breed).distinct.map { |pet| pet.breed }
+            else
+              available_breeds = []
+            end
+          %>
           <%= select_tag :breed,
-            options_for_select([ "Beagle", "Bulldog", "Labrador", "Chihuahua", "German Shepherd", "Pug", "Golden Retriever", "Poodle", "Border Collie", "Yorkshire Terrier", "Dachshund", "Spaniel", "Shih Tzu", "Boxer", "Bull Terrier", "Husky", "Corgi", "Dobermann", "Great Dane", "Pomenarian", "Dalmatian", "Other" ],
+            options_for_select(available_breeds,
             params[:breed]),
             prompt: "Breed",
             class: "dropdown dropdown-filter pl-5"
