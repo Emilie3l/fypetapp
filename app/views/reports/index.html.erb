@@ -1,7 +1,7 @@
 <div>
   <div class="container">
     <div class="row search-index">
-      <div class="left-index">
+      <div class="left-index text-center">
         <%= form_tag reports_path, method: :get, id: "pet_filter" do %>
           <%= select_tag :category,
             options_for_select([ "Dog", "Cat" ],
@@ -28,6 +28,10 @@
 
       <div class="right-index text-center">
         <h2><span style="color: #E6455A"><%= @reports.length %></span> Pets Found Near You</h2>
+        <%= form_tag reports_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query, params[:query], class: "form-inline", placeholder: "Find pet by location"%>
+        <%= submit_tag "Search", class: "btn btn-primary search-pets" %>
+        <% end %>
       </div>
     </div>
   </div>
