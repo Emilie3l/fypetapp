@@ -7,7 +7,7 @@ class ReportsController < ApplicationController
 
   def index
     results = policy_scope(Report)
-    @reports = results
+    @reports = results.order('date DESC')
 
     if params[:category].present? && params[:color].present? && params[:breed].present?
       results = Report.joins(:pet).where("pets.category ILIKE ? AND pets.color ILIKE ? AND pets.breed ILIKE ? ", params[:category], params[:color], params[:breed])
@@ -25,16 +25,16 @@ class ReportsController < ApplicationController
 
     if params[:query]
         #result = Geocoder.search(params[:query])
-        @reports = results.geocoded.near(params[:query], 150)
+        @reports = results.geocoded.near(params[:query], 150).order('date DESC')
       elsif user_signed_in?
         @user_address = current_user.address
         if @user_address
-          @reports = results.geocoded.near(@user_address, 50)
+          @reports = results.geocoded.near(@user_address, 50).order('date DESC')
         else
-          @reports = results.geocoded.order('created_at DESC')
+          @reports = results.geocoded.order('date DESC')
         end
     else
-      @reports = results.geocoded.order('created_at DESC')
+      @reports = results.geocoded.order('date DESC')
      end
 
     @markers = @reports.map do |report|
