@@ -36,11 +36,13 @@
         <h2 class="text-center">Report #<%= @report.id %></h2>
         <div class="card-report-full-details">
           <h3>Details
-            <% if user_signed_in? %>
+            <!-- Shows or hide the edit icon according to the current user -->
+            <% if policy(@report).edit? %>
               <%= link_to "#" do %>
                 <i class="fas fa-edit"></i>
               <% end %>
             <% end %>
+            <!-- Till here is showed according to Pundit -->
           </h3>
           <div class="report-fields">
             <table class="table">
@@ -99,18 +101,20 @@
               <!-- Option for unlist -->
               <%= simple_form_for @report do |f| %>
                 <%= link_to "To Reports", reports_path, class: "btn btn-primary btn-wide" %>
-                <% if @report.reunited != true %>
-                   <%= hidden_field_tag(:reunited, true) %>
-                   <%= f.submit "Reunite", class: "btn btn-primary btn-wide" %>
-                <% else %>
-                   <%= hidden_field_tag(:reunited, false) %>
-                   <%= f.submit "Un-Reunite", class: "btn btn-success btn-wide" %>
+                <% if policy(@report).edit? %>
+                  <% if @report.reunited != true %>
+                    <%= hidden_field_tag(:reunited, true) %>
+                     <%= f.submit "Reunite", class: "btn btn-primary btn-wide" %>
+                  <% else %>
+                    <%= hidden_field_tag(:reunited, false) %>
+                     <%= f.submit "Un-Reunite", class: "btn btn-success btn-wide" %>
+                  <% end %>
                 <% end %>
                 <%= link_to "Feedback", feedback_path(@report),
                     class: "btn btn-primary btn-wide" unless @report.reunited %> 
               <% end %>
             <% else %>
-              <%= link_to "Back", :back, class: "btn btn-primary btn-wide" %>
+              <%= link_to "To Reports", reports_path, class: "btn btn-primary btn-wide" %>
               <%= link_to "Feedback", feedback_path(@report),
                   class: "btn btn-primary btn-wide" unless @report.reunited %>
             <% end %>
