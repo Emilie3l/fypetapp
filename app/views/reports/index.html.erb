@@ -1,7 +1,7 @@
 <div>
   <div class="container">
     <div class="row search-index">
-      <div class="left-index">
+      <div class="left-index text-center">
         <%= form_tag reports_path, method: :get, id: "pet_filter" do %>
           <%= select_tag :category,
             options_for_select([ "Dog", "Cat" ],
