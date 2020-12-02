@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_pet, only: [:new, :create]
+  before_action :set_report, only: [:update]
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   def index
@@ -46,7 +47,7 @@ class ReportsController < ApplicationController
     @report.user = current_user
 
     if @report.save
-      redirect_to reports_path
+      render "reports/show"
       flash[:notice] = "Your report has been created."
     else
       flash[:alert] = "Still fields without fill up."
@@ -65,8 +66,22 @@ class ReportsController < ApplicationController
 
   def edit
   end
-
+  
   def update
+    reunited = params.require(:reunited)
+    flash_show = reunited == "true" ? "Reunited" : "Un-Reunited"
+    reunited_date = reunited == "true" ? Date.today : nil
+    
+    @report.reunited = reunited
+    @report.reunited_date = reunited_date
+
+    if @report.save
+      redirect_to report_path
+      flash[:notice] = "Your report has been marked as #{flash_show}."
+    else
+      redirect_to report_path
+      flash[:alert] = "We couldn't update the report."
+    end
   end
 
   def destroy
@@ -80,5 +95,10 @@ class ReportsController < ApplicationController
 
   def set_pet
     @pet = Pet.find(params[:pet_id])
+  end
+
+  def set_report
+    report_id = params.require(:id)
+    @report = Report.find(report_id)
   end
 end
