@@ -36,6 +36,11 @@
   width: 128px;
   margin-left: -10px;
 }
+.form-inline {
+  border-radius: 8px 0px 0px 8px;
+  height: 50px;
+  width: 400px;
+}
 .search-index {
   margin-top: 90px;
   margin-bottom: 90px;
@@ -67,6 +72,9 @@
 }
 .cards-container {
   margin-left: 5px;
+}
+.search-pets {
+  border-radius: 0px 8px 8px 0px;
 }
 .map {
   width: 55vw;
