@@ -70,7 +70,7 @@ class ReportsController < ApplicationController
 
   def edit
   end
-  
+
   def update
     reunited = params.require(:reunited)
     flash_show = reunited == "true" ? "Reunited" : "Un-Reunited"
