@@ -12,6 +12,8 @@
 
   <div class="cards">
 
+    <% @iterator = 0 %>
+
     <% @recent_reunited.each do |report| %>
       <div class="card-pet">
         <%= link_to report_path(report), class: 'card-link' do %>
@@ -26,12 +28,13 @@
           <div class="card-pet-infos">
             <div>
               <h2><%= report.pet.name %></h2>
-              <p><%= report.address %></p>
+              <p class="testimonials"><%= @testimonials[@iterator] %></p>
+              <img src="<%= @user_photos[@iterator] %>" class="card-trip-user-home avatar-bordered-home" />
             </div>
           </div>
         <% end %>
       </div>
+      <% @iterator += 1 %>
     <% end %>
   </div>
-
 </div>
