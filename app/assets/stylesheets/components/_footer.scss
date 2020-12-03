@@ -20,11 +20,10 @@
   text-decoration: none;
   font-size: 2rem;
   padding: 0px 10px;
-  color: $fypet-cto-color;
-  opacity: 0.20;
+  color: #124A72;
 }
 .footer-links a:hover {
-  opacity: 1;
+  opacity: 0.4;
 }
 .align-center {
   text-align: center;
@@ -32,6 +31,5 @@
 .fyp-foo-txt {
   font-family: $headers-font;
   font-size: 1.5rem;
-  color: $fypet-cto-color;
-  opacity: 0.30;
+  color: #124A72;
 }
