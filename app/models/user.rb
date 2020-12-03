@@ -8,4 +8,6 @@ class User < ApplicationRecord
 
   has_many :reports, dependent: :destroy
   has_many :pets, through: :reports
+
+  has_one_attached :picture
 end

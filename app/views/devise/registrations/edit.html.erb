@@ -4,6 +4,22 @@
 
     <h3>My profile</h3>
     <p>Keep your info updated, it is the only way to get feedback for your reports.</p>
+    
+    <% if @user.picture.attached? %>
+      <% label_photo = "Update" %>
+      <% holder_photo = cl_image_path @user.picture.key %>
+    <% else %>
+      <% label_photo = "Upload" %>
+      <% holder_photo = "https://www.bu.edu/cs/files/2018/07/placeholder-face-big.png" %>
+    <% end %>
+    <%= image_tag "#{holder_photo}",
+        width: 255, height: 255, class: "hidden", id: "photo-preview" %>
+    <%= f.input :picture, as: :file,
+                 required: false,
+                 input_html: {  class: 'd-none', id: 'photo-input' },
+                 label_html: { class: 'upload-photo'},
+                 label: "📸 #{label_photo} your photo" %>
+    
     <%= f.input :first_name, 
                 autofocus: true,
                 placeholder: "First name" %>

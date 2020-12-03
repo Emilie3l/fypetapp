@@ -17,6 +17,6 @@ class PagesController < ApplicationController
 
   def message
     redirect_to reports_path
-    flash[:notice] = "Your message has been sended. Thank you for your help!"
+    flash[:notice] = "Your message has been sent. Thanks for your help!"
   end
 end
