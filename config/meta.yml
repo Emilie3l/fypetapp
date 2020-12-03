@@ -1,0 +1,9 @@
+meta_product_name: "FYPet"
+meta_title: "FindYourPet - Webapp that helps you find your pet and reunite with them quickly."
+meta_description: "The best way to find your Missing or Lost pet is using FYPet,
+                   you can quickly make a report, with very few but relevant information.
+                   When your report is active others can see it and give you feedback.
+                   You can also browse through an interactive map, that shows you the
+                   nearest and recent Missing or Lost events."
+meta_image: "cover.jpg" # should exist in `app/assets/images/`
+twitter_account: "@fypetapp"   # required for Twitter Cards
