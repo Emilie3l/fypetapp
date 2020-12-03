@@ -10,7 +10,7 @@
             <% if @report.status == "Missing" %>
               <h2 class="missing"><i class="far fa-sad-cry"></i>
             <% else %>
-              <h2 class="lost"><i class="far fa-smile"></i>
+              <h2 class="lost"><i class="far fa-sad-tear"></i>
             <% end %>
             <%= @report.status %>
           <% end %>
@@ -59,13 +59,15 @@
                   <td><strong>Age:</strong></td>
                   <td><span><%= @report.pet.age %></span></td>
                 </tr>
-                <tr>
-                  <td><strong>Traits:</strong></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td colspan="2"><span><%= @report.pet.traits %></span></td>
-                </tr>
+                <% unless @report.pet.traits.empty? %>
+                  <tr>
+                    <td><strong>Traits:</strong></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2"><span><%= @report.pet.traits %></span></td>
+                  </tr>
+                <% end %>
                 <tr>
                   <td><strong><%= @report.status %> Date:</strong></td>
                   <td><span><%= @report.date.strftime('%a %b %d, %Y') %></span></td>
@@ -96,23 +98,23 @@
             <% if user_signed_in? %>
               <!-- Option for unlist -->
               <%= simple_form_for @report do |f| %>
-                <%= link_to "To Reports", reports_path, class: "btn btn-primary btn-wide" %>
+                <%= link_to "To Reports", reports_path, class: "btn btn-success btn-wide" %>
                 <% if policy(@report).edit? %>
                   <% if @report.reunited != true %>
                     <%= hidden_field_tag(:reunited, true) %>
                      <%= f.submit "Reunite", class: "btn btn-primary btn-wide" %>
                   <% else %>
                     <%= hidden_field_tag(:reunited, false) %>
-                     <%= f.submit "Un-Reunite", class: "btn btn-success btn-wide" %>
+                     <%= f.submit "Un-Reunite", class: "btn btn-primary btn-wide" %>
                   <% end %>
                 <% end %>
                 <%= link_to "Feedback", feedback_path(@report),
-                    class: "btn btn-primary btn-wide" unless @report.reunited %> 
+                    class: "btn btn-success btn-wide" unless @report.reunited %> 
               <% end %>
             <% else %>
-              <%= link_to "To Reports", reports_path, class: "btn btn-primary btn-wide" %>
+              <%= link_to "To Reports", reports_path, class: "btn btn-success btn-wide" %>
               <%= link_to "Feedback", feedback_path(@report),
-                  class: "btn btn-primary btn-wide" unless @report.reunited %>
+                  class: "btn btn-success btn-wide" unless @report.reunited %>
             <% end %>
           </div>
         </div>
