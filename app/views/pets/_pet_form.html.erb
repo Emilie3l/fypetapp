@@ -31,10 +31,12 @@
   <%= f.input :traits,
                placeholder: "Particular traits (optional)",
                hint: "Something unique for this pet." %>
+               <%= image_tag "https://wolper.com.au/wp-content/uploads/2017/10/image-placeholder.jpg", width: 250, height: 250, class: "hidden", id: "photo-preview" %>
   <%= f.input :photo, as: :file,
                required: true,
-               label: "Upload photo:",
-               placeholder: "Photo in here please.",
+               input_html: {  class: 'd-none', id: 'photo-input' },
+               label_html: { class: 'upload-photo'},
+               label: '📸 Upload a photo',
                hint: "In order to anyone help you we need a photo." %>
   
   <%= f.submit class: "btn btn-primary"%>
