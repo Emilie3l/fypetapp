@@ -31,6 +31,7 @@ import { initAutocomplete } from '../plugins/init_autocomplete';
 
 // import { initSelect2 } from '../components/init_select2';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
+import { previewImageOnFileSelect } from '../components/photo_preview';
 import { initEnableDisableReward } from '../components/create_report';
 import { filterCards } from '../components/dropdown';
 
@@ -40,6 +41,7 @@ document.addEventListener('turbolinks:load', () => {
   initUpdateNavbarOnScroll();
   initMapbox();
   initEnableDisableReward();
+  previewImageOnFileSelect();
   filterCards();
   initAutocomplete();
 });
