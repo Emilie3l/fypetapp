@@ -8,6 +8,10 @@
 require "open-uri"
 require "json"
 
+def generate_a_trait
+  rand(7..10) == 10 ? "" : get_trait
+end
+
 def generate_pet_category
   rand(7..10) == 10 ? "Cat" : "Dog"
 end
@@ -26,6 +30,22 @@ end
 
 def get_pet_name(gender)
   gender == "Male" ? get_male_pet_name : get_female_pet_name
+end
+
+def get_trait
+  pet_traits = [
+    "Will answer to the name 'Ricky Martin' when called",
+    "Has a small scar behind left ear",
+    "Does not do well with kids",
+    "Has a limp on back left foot from an accident as a baby",
+    "Has diabetes, please do not feed this dog treats",
+    "Shows teeth when excited- looks like they are smiling!",
+    "If you look closely at the left ear, it has a small bite taken out",
+    "Missing front tooth, you can see this if you gently look into mouth",
+    "Lost with a purple bandanna that says 'my human is my best friend'",
+    "Allergic to tortillas"
+  ]
+  pet_traits.sample
 end
 
 def get_male_pet_name
@@ -175,20 +195,19 @@ puts "Users were created."
 pet_size = ["Small", "Medium", "Large"]
 pet_color = ["White", "Black", "Gold", "Cream", "Brown"]
 pet_age = [1, 3, 4, 6, 5, 9, 8, 13, 2]
-pet_traits = "Traits go in here, and could be a short description too."
 all_cat_breeds = fetch_cat_breeds
 
 puts ""
 puts ""
 puts "Creating some pets..."
-50.times do
+75.times do
   pet = Pet.new
   pet.category = generate_pet_category
   pet.gender = generate_pet_gender
   pet.size = pet_size.sample
   pet.color = pet_color.sample
   pet.age = pet_age.sample
-  pet.traits = pet_traits
+  pet.traits = generate_a_trait
   
   pet.name = get_pet_name(pet.gender)
   
