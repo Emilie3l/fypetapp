@@ -1,48 +1,47 @@
 <div>
-  <div class="container">
-    <div class="row search-index">
-      <div class="left-index text-center">
-        <%= form_tag reports_path, method: :get, id: "pet_filter" do %>
-          <%= select_tag :category,
-            options_for_select([ "Dog", "Cat" ],
-            params[:category]),
-            prompt: "Pet type",
-            class: "dropdown dropdown-filter pl-5"
-          %>
+  <div class="row search-index">
+    <div class="left-index text-center">
+      <%= form_tag reports_path, method: :get, id: "pet_filter" do %>
+        <%= select_tag :category,
+          options_for_select([ "Dog", "Cat" ],
+          params[:category]),
+          prompt: "Pet type",
+          class: "dropdown dropdown-filter pl-5"
+        %>
 
-          <% available_colors = Pet.select(:color).distinct.map { |pet| pet.color } %>
-          <%= select_tag :color,
-            options_for_select(available_colors,
-            params[:color]),
-            prompt: "Color",
-            class: "dropdown dropdown-filter"
-          %>
+        <% available_colors = Pet.select(:color).distinct.map { |pet| pet.color } %>
+        <%= select_tag :color,
+          options_for_select(available_colors,
+          params[:color]),
+          prompt: "Color",
+          class: "dropdown dropdown-filter"
+        %>
 
-          <% 
-            if params[:category]
-              available_breeds = Pet.where(category: params[:category]).select(:breed).distinct.map { |pet| pet.breed }
-            else
-              available_breeds = []
-            end
-          %>
-          <%= select_tag :breed,
-            options_for_select(available_breeds,
-            params[:breed]),
-            prompt: "Breed",
-            class: "dropdown dropdown-filter pl-5"
-          %>
-        <% end %>
-      </div>
+        <%
+          if params[:category]
+            available_breeds = Pet.where(category: params[:category]).select(:breed).distinct.map { |pet| pet.breed }
+          else
+            available_breeds = []
+          end
+        %>
+        <%= select_tag :breed,
+          options_for_select(available_breeds,
+          params[:breed]),
+          prompt: "Breed",
+          class: "dropdown dropdown-filter pl-5"
+        %>
+      <% end %>
+    </div>
 
-      <div class="right-index text-center">
-        <h2><span style="color: #E6455A"><%= @reports.length %></span> Pets Found Near You</h2>
-        <%= form_tag reports_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query, params[:query], class: "form-inline", placeholder: "Find pet by location"%>
-        <%= submit_tag "Search", class: "btn btn-primary search-pets" %>
-        <% end %>
-      </div>
+    <div class="right-index text-center">
+      <h2 class="pets-number pl-5"><span style="color: #E6455A"><%= @reports.length %></span> Pets Found Near You</h2>
+      <%= form_tag reports_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query, params[:query], class: "form-inline pl-3", placeholder: "Find pet by location"%>
+      <%= submit_tag "Search", class: "btn btn-primary search-pets" %>
+      <% end %>
     </div>
   </div>
+
 
   <div class="cardsmapcontainer">
     <div class="cards-container">

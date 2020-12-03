@@ -40,7 +40,10 @@
   border-radius: 8px 0px 0px 8px;
   height: 50px;
   width: 400px;
+  margin-left: 70px;
+  border: 1px solid #124A72;
 }
+
 .search-index {
   margin-top: 90px;
   margin-bottom: 90px;
@@ -98,6 +101,7 @@
 .left-index {
   margin-top: 140px;
   margin-bottom: -50px;
+  margin-left: 60px;
 }
 .dropbtn {
   background-color: #124A72;
@@ -190,14 +194,9 @@
   border: none;
   cursor: pointer;
   border-radius: 8px;
-  max-width: 150px;
+  max-width: 200px;
   text-align: center;
 }
-
-
-
-
-
 
 
 
