@@ -48,3 +48,67 @@
     font-size: 1.2rem;
   }
 }
+.show-report {
+  .card-show-report {
+    height: 100%;
+    box-shadow: 0 0px 10px rgba($text-headers-color,0.30);
+    border-radius: 8px;
+  }
+  h2 {
+    background-color: $primary;
+    border-radius: 8px 8px 0 0;
+    margin: 0;
+    padding: 8px 0;
+    color: white;
+    font-size: 2.5rem;
+  }
+  i {
+    font-size: 1.2rem;
+    padding-left: 5px;
+  }
+  .card-report-header i {
+    font-size: 2rem;
+  }
+  h2.reunited {
+    background-color: $primary;
+  }
+  h2.missing {
+    background-color: $danger;
+  }
+  h2.lost {
+    background-color: $success;
+  }
+  h3 {
+    font-weight: bolder;
+  }
+  .card-new-report-show-photo {
+    border-radius: 0;
+  }
+  h5 {
+    font-family: $headers-font;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: $fypet-cto-color;
+  }
+  h6 {
+    font-weight: normal;
+    font-size: 1.3rem;
+    color: $text-headers-color;
+  }
+  .card-show-report-description {
+    display: flex;
+    height: 50px;
+    position: relative;
+    justify-content: space-between;
+  }
+  .card-show-report-description .desc-name {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  .card-show-report-description .desc-category {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}

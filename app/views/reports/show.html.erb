@@ -1,123 +1,182 @@
 <div class="container">
-  <div class="main-show">
-    
-    <div class="card-report">
-      <div class="card-report-basic">
-        <div class="card-report-frame">
-          <% if @report.reunited %>
-            <h2><i class="far fa-smile-beam"></i> Reunited
-          <% else %>
-            <% if @report.status == "Missing" %>
-              <h2 class="missing"><i class="far fa-sad-cry"></i>
-            <% else %>
-              <h2 class="lost"><i class="far fa-sad-tear"></i>
-            <% end %>
-            <%= @report.status %>
-          <% end %>
-            </h2>
-            <% if @report.pet.photo.attached? %>
-              <div class="card-report-show-photo" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= cl_image_path @report.pet.photo.key %>')">
-              </div>
-            <% else %>
-              <div class="card-report-show-photo" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80')">
-              </div>
-            <% end %>
-        </div>
-        <div class="card-report-description">
-          <h4><%= @report.pet.name %></h4><span><%= @report.pet.category.capitalize %></span>
-        </div>
-        <p><%= @report.pet.breed %></p>
-      </div>
-      <div class="card-report-details">
-        <h2 class="text-center">Report #<%= @report.id %></h2>
-        <div class="card-report-full-details">
-          <h3>Details
-            <!-- Shows or hide the edit icon according to the current user -->
-            <% if policy(@report).edit? %>
-              <%= link_to "#" do %>
-                <i class="fas fa-edit"></i>
-              <% end %>
-            <% end %>
-            <!-- Till here is showed according to Pundit -->
-          </h3>
-          <div class="report-fields">
-            <table class="table">
-              <tbody>
-                <tr>
-                  <td><strong>Size:</strong></td>
-                  <td><span><%= @report.pet.size %></span></td>
-                </tr>
-                <tr>
-                  <td><strong>Color:</strong></td>
-                  <td><span><%= @report.pet.color %></span></td>
-                </tr>
-                <tr>
-                  <td><strong>Gender:</strong></td>
-                  <td><span><%= @report.pet.gender %></span></td>
-                </tr>
-                <tr>
-                  <td><strong>Age:</strong></td>
-                  <td><span><%= @report.pet.age %></span></td>
-                </tr>
-                <% unless @report.pet.traits.empty? %>
-                  <tr>
-                    <td><strong>Traits:</strong></td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td colspan="2"><span><%= @report.pet.traits %></span></td>
-                  </tr>
-                <% end %>
-                <tr>
-                  <td><strong><%= @report.status %> Date:</strong></td>
-                  <td><span><%= @report.date.strftime('%a %b %d, %Y') %></span></td>
-                </tr>
-                <% if @report.reunited_date %>
-                  <tr>
-                    <td><strong>Reunited Date:</strong></td>
-                    <td><span><%= @report.reunited_date.strftime('%a %b %d, %Y') %></span></td>
-                  </tr>
-                <% end %>
-                <% if @report.reward_offered %>
-                  <tr>
-                    <td><strong>Reward:</strong></td>
-                    <td><span><%= @report.reward_amount %></span></td>
-                  </tr>
-                <% end %>
-                <tr>
-                  <td><strong>Last seen on:</strong></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td colspan="2"><span><%= @report.address %></span></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="report-actions">
-            <% if user_signed_in? %>
-              <!-- Option for unlist -->
-              <%= simple_form_for @report do |f| %>
-                <%= link_to "To Reports", reports_path, class: "btn btn-success btn-wide" %>
-                <% if policy(@report).edit? %>
-                  <% if @report.reunited != true %>
-                    <%= hidden_field_tag(:reunited, true) %>
-                     <%= f.submit "Safe & Sound", class: "btn btn-primary btn-wide" %>
+  <div class="new-form show-report pt-2">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-10">
+
+        <div class="row">
+          <div class="col-md-5">
+            <div class="card-pic-show-report">
+              <div class="card-show-report">
+                <div class="card-report-header text-center">
+                  <% if @report.reunited %>
+                    <h2 class="reunited"><i class="far fa-smile-beam"></i> Reunited
                   <% else %>
-                    <%= hidden_field_tag(:reunited, false) %>
-                     <%= f.submit "#{@report.status} again", class: "btn btn-primary btn-wide" %>
+                    <% if @report.status == "Missing" %>
+                      <h2 class="missing"><i class="far fa-sad-cry"></i>
+                    <% else %>
+                      <h2 class="lost"><i class="far fa-sad-tear"></i>
+                    <% end %>
+                    <%= @report.status %>
                   <% end %>
+                    </h2>
+                </div>
+                <% if @report.pet.photo.attached? %>
+                  <div class="card-new-report-show-photo" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('<%= cl_image_path @report.pet.photo.key %>')">
+                  </div>
+                <% else %>
+                  <div class="card-new-report-show-photo" style="background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url('https://images.unsplash.com/photo-1561037404-61cd46aa615b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80')">
+                  </div>
                 <% end %>
-                <%= link_to "Feedback", feedback_path(@report),
-                    class: "btn btn-success btn-wide" unless @report.reunited %> 
+                <div class="card-show-report-description">
+                  <h4 class="desc-name"><%= @report.pet.name %></h4>
+                  <h4 class="desc-category"><%= @report.pet.category.capitalize %></h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <div class="row ml-0">
+              <h3>Details for Report #<%= @report.id %></h3>
+              <!-- Shows or hide the edit icon according to the current user -->
+              <% if policy(@report).edit? %> 
+                <%= link_to "#" do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
               <% end %>
-            <% else %>
-              <%= link_to "To Reports", reports_path, class: "btn btn-success btn-wide" %>
-              <%= link_to "Feedback", feedback_path(@report),
-                  class: "btn btn-success btn-wide" unless @report.reunited %>
+              <!-- Till here is showed according to Pundit -->
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <h5>Breed:</h5>
+              </div>
+              <div class="col">
+                <h6><%= @report.pet.breed %></h6>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <h5>Size:</h5>
+              </div>
+              <div class="col">
+                <h6><%= @report.pet.size %></h6>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col">
+                <h5>Color:</h5>
+              </div>
+              <div class="col">
+                <h6><%= @report.pet.color %></h6>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <h5>Gender:</h5>
+              </div>
+              <div class="col">
+                <h6><%= @report.pet.gender %></h6>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <h5>Age:</h5>
+              </div>
+              <div class="col">
+                <h6><%= @report.pet.age %></h6>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <h5>Traits:</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <% unless @report.pet.traits.empty? %>
+                  <h6><%= @report.pet.traits %></h6>
+                <% else %>
+                  <h6>None.</h6>
+                <% end %>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <h5><%= @report.status %> Date:</h5>
+              </div>
+              <div class="col">
+                <h6><%= @report.date.strftime('%a %b %d, %Y') %></h6>
+              </div>
+            </div>
+
+            <% if @report.reunited_date %>
+              <div class="row">
+                <div class="col">
+                  <h5>Reunited Date:</h5>
+                </div>
+                <div class="col">
+                  <h6><%= @report.reunited_date.strftime('%a %b %d, %Y') %></h6>
+                </div>
+              </div>
             <% end %>
+
+            <div class="row">
+              <div class="col">
+                <h5>Reward:</h5>
+              </div>
+              <div class="col">
+                <h6><%= @report.reward_offered ? @report.reward_amount : "None." %></h6>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col">
+                <h5>Last seen on:</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <h6><%= @report.address %></h6>
+              </div>
+            </div>
+
+            <div class="row mt-3">
+            
+              <div class="report-actions">
+                <% if user_signed_in? %>
+                  <!-- Option for unlist -->
+                  <%= simple_form_for @report do |f| %>
+                    <%= link_to "To Reports", reports_path, class: "btn btn-success btn-wide" %>
+                    <% if policy(@report).edit? %>
+                      <% if @report.reunited != true %>
+                        <%= hidden_field_tag(:reunited, true) %>
+                        <%= f.submit "Safe & Sound", class: "btn btn-primary btn-wide", id: "btn-safesound" %>
+                      <% else %>
+                        <%= hidden_field_tag(:reunited, false) %>
+                        <%= f.submit "#{@report.status} again", class: "btn btn-primary btn-wide" %>
+                      <% end %>
+                    <% end %>
+                    <%= link_to "Feedback", feedback_path(@report),
+                        class: "btn btn-success btn-wide" unless @report.reunited %> 
+                  <% end %>
+                <% else %>
+                  <%= link_to "To Reports", reports_path, class: "btn btn-success btn-wide" %>
+                  <%= link_to "Feedback", feedback_path(@report),
+                      class: "btn btn-success btn-wide" unless @report.reunited %>
+                <% end %>
+              </div>
+              
+            </div>
           </div>
         </div>
+    
       </div>
     </div>
   </div>
