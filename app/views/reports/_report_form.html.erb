@@ -23,8 +23,6 @@
 
             </div>
 
-            <!-- <div class="col-md-1"></div> -->
-
             <div class="col-md-6 pl-3">
               <h3>New Report</h3>
               <p>Please give us details about the incident.</p>
@@ -34,7 +32,7 @@
                   <%= f.input :status, 
                               autofocus: true,
                               required: true,
-                              collection: ['Missing', 'Found'],
+                              collection: ['Missing', 'Lost'],
                               label: "Kind of report",
                               placeholder: "Choose Missing or Found",
                               hint: "Select one option from the list." %>

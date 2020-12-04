@@ -102,10 +102,10 @@
                 <% if policy(@report).edit? %>
                   <% if @report.reunited != true %>
                     <%= hidden_field_tag(:reunited, true) %>
-                     <%= f.submit "Reunite", class: "btn btn-primary btn-wide" %>
+                     <%= f.submit "Safe & Sound", class: "btn btn-primary btn-wide" %>
                   <% else %>
                     <%= hidden_field_tag(:reunited, false) %>
-                     <%= f.submit "Un-Reunite", class: "btn btn-primary btn-wide" %>
+                     <%= f.submit "#{@report.status} again", class: "btn btn-primary btn-wide" %>
                   <% end %>
                 <% end %>
                 <%= link_to "Feedback", feedback_path(@report),
