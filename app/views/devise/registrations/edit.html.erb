@@ -1,56 +1,117 @@
-<div class="container main-form">
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-    <%= f.error_notification %>
+<div class="container">
+  <div class="new-form">
+    <div class="row justify-content-center pt-3">
+      <div class="col-12 col-lg-8">
 
-    <h3>My profile</h3>
-    <p>Keep your info updated, it is the only way to get feedback for your reports.</p>
-    
-    <% if @user.picture.attached? %>
-      <% label_photo = "Update" %>
-      <% holder_photo = cl_image_path @user.picture.key %>
-    <% else %>
-      <% label_photo = "Upload" %>
-      <% holder_photo = "https://www.bu.edu/cs/files/2018/07/placeholder-face-big.png" %>
-    <% end %>
-    <%= image_tag "#{holder_photo}",
-        width: 255, height: 255, class: "hidden", id: "photo-preview" %>
-    <%= f.input :picture, as: :file,
-                 required: false,
-                 input_html: {  class: 'd-none', id: 'photo-input' },
-                 label_html: { class: 'upload-photo'},
-                 label: "📸 #{label_photo} your photo" %>
-    
-    <%= f.input :first_name, 
-                autofocus: true,
-                placeholder: "First name" %>
-    <%= f.input :last_name,
-                placeholder: "Last name" %>
-    <%= f.input :email, required: true %>
-    <%= f.input :phone_number %>
-    <%= f.input :address, 
-                placeholder: "1298 Street name, City, State",
-                hint: "With an address you could improve your searches through the map." %>
-    <%= f.input :password,
-                hint: "Leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "We need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= f.error_notification %>
 
-    <%= f.button :submit, "Update profile", class: "btn btn-primary" %>
+          <div class="form-row">
+            <div class="col">
+              <h3>My profile</h3>
+              <p>Keep your info updated, it is the only way to get feedback for your reports.</p>
+            </div>
+          </div>
 
-  <% end %>
+          <div class="form-row">
+            <div class="col-md-5">
+              <% if @user.picture.attached? %>
+                <% label_photo = "Update" %>
+                <% holder_photo = cl_image_path @user.picture.key %>
+              <% else %>
+                <% label_photo = "Upload" %>
+                <% holder_photo = "https://www.bu.edu/cs/files/2018/07/placeholder-face-big.png" %>
+              <% end %>
+              <%= image_tag "#{holder_photo}",
+                  width: 255, height: 255, class: "hidden", id: "photo-preview" %>
+              <%= f.input :picture, as: :file,
+                          required: false,
+                          input_html: {  class: 'd-none', id: 'photo-input' },
+                          label_html: { class: 'upload-photo'},
+                          label: "📸 #{label_photo} your photo" %>
+            </div>
 
-  <h4>Unhappy?</h4>
-  <%= link_to "Cancel my account", registration_path(resource_name),
-                                   data: { confirm: "Are you sure?" },
-                                   method: :delete,
-                                   class: "btn btn-primary" %>
+            <div class="col-md-7">
 
-  <%= link_to "Back", :back, class: "btn btn-primary" %>
+              <div class="form-row">
+                <div class="col">
+                  <%= f.input :first_name, 
+                              autofocus: true,
+                              placeholder: "First name" %>
+                </div>
+
+                <div class="col">
+                  <%= f.input :last_name,
+                              placeholder: "Last name" %>
+                </div>
+              </div>
+              
+              <div class="form-row">
+                <div class="col">
+                  <%= f.input :email, required: true %>
+                </div>
+                
+                <div class="col">
+                  <%= f.input :phone_number %>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col">
+                  <%= f.input :address, as: :text, 
+                              placeholder: "1298 Street name, City, State",
+                              hint: "With an address you could improve your searches through the map." %>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="form-row">
+            <div class="col">
+              <%= f.input :current_password,
+                          hint: "We need it to confirm your changes",
+                          required: true,
+                          input_html: { autocomplete: "current-password" } %>
+            </div>
+
+            <div class="col">
+              <%= f.input :password,
+                          hint: "Blank if you don't want to change it",
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+            </div>
+
+            <div class="col">
+              <%= f.input :password_confirmation,
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="col-md-6">
+              <%= f.button :submit, "Update profile", class: "btn btn-primary" %>
+        <% end %>
+            </div>
+            <div class="col-md-2">
+              <h4>Unhappy?</h4>
+            </div>
+            
+            <div class="col-md-4">
+              <%= link_to "Cancel my account", registration_path(resource_name),
+                                              data: { confirm: "Are you sure?" },
+                                              method: :delete,
+                                              class: "btn btn-primary" %>
+
+              <%= link_to "Back", :back, class: "btn btn-primary" %>
+            </div>
+          </div>
+
+
+
+      </div>
+    </div>
+  </div>
 </div>

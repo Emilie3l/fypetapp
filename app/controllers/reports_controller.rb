@@ -6,21 +6,31 @@ class ReportsController < ApplicationController
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
+    dropdowns_query = Hash.new
+    dropdowns_query[:category] = params[:category] if params[:category].present?
+    dropdowns_query[:color] = params[:color] if params[:color].present?
+    dropdowns_query[:breed] = params[:breed] if params[:breed].present?
+    
     results = policy_scope(Report)
-    @reports = results.order('date DESC')
 
-    if params[:category].present? && params[:color].present? && params[:breed].present?
-      results = Report.joins(:pet).where("pets.category ILIKE ? AND pets.color ILIKE ? AND pets.breed ILIKE ? ", params[:category], params[:color], params[:breed])
-
-    elsif params[:category].present?
-      results = Report.joins(:pet).where("pets.category ILIKE ?", params[:category])
-
-    elsif params[:color].present?
-      results = Report.joins(:pet).where("pets.color ILIKE ?", params[:color])
-
-    elsif params[:breed].present?
-      results = Report.joins(:pet).where("pets.breed ILIKE ?", params[:breed])
+    unless dropdowns_query.empty?
+      @reports = Report.joins(:pet).where(pets: dropdowns_query)
+    else
+      @reports = results.order('date DESC')
     end
+    # raise
+    # if params[:category].present? && params[:color].present? && params[:breed].present?
+    #   results = Report.joins(:pet).where("pets.category ILIKE ? AND pets.color ILIKE ? AND pets.breed ILIKE ? ", params[:category], params[:color], params[:breed])
+
+    # elsif params[:category].present?
+    #   results = Report.joins(:pet).where("pets.category ILIKE ?", params[:category])
+
+    # elsif params[:color].present?
+    #   results = Report.joins(:pet).where("pets.color ILIKE ?", params[:color])
+
+    # elsif params[:breed].present?
+    #   results = Report.joins(:pet).where("pets.breed ILIKE ?", params[:breed])
+    # end
 
     if params[:query]
         @center = Geocoder.search(params[:query]).first.coordinates
@@ -55,7 +65,7 @@ class ReportsController < ApplicationController
     @report.user = current_user
 
     if @report.save
-      render "reports/show"
+      redirect_to reports_path
       flash[:notice] = "Your report has been created."
     else
       flash[:alert] = "Still fields without fill up."

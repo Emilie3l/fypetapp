@@ -43,7 +43,17 @@ def get_trait
     "If you look closely at the left ear, it has a small bite taken out",
     "Missing front tooth, you can see this if you gently look into mouth",
     "Lost with a purple bandanna that says 'my human is my best friend'",
-    "Allergic to tortillas"
+    "Allergic to tortillas",
+    "Has a black harness and a blue collar",
+    "Very friendly! Loves to snuggle",
+    "Does not seem to be microchipped",
+    "Approximately 2 year old. Has a light brown nose and light brown eyes. Weighs about 10-11   Pounds",
+    "Gets along very well with my female cat- maybe has cats at home?",
+    "Shy but loves people. Approached me after wandering the street.",
+    "Approximately 3 years old. A little aggressive with other dogs but loves people! And loves to eat coconuts",
+    "Found this dog eating plants in the park. A little skinny, might be lost for a while.",
+    "Missing back left leg, super cute dog!",
+    "Medium sized with pink nose and hazel eyes. About 8 years old, very friendly."
   ]
   pet_traits.sample
 end
@@ -197,10 +207,11 @@ pet_color = ["White", "Black", "Gold", "Cream", "Brown"]
 pet_age = [1, 3, 4, 6, 5, 9, 8, 13, 2]
 all_cat_breeds = fetch_cat_breeds
 
+how_many_pets = rand(60..100)
 puts ""
 puts ""
-puts "Creating some pets..."
-75.times do
+puts "Creating #{how_many_pets} pets..."
+how_many_pets.times do
   pet = Pet.new
   pet.category = generate_pet_category
   pet.gender = generate_pet_gender
