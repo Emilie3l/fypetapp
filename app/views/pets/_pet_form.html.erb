@@ -28,7 +28,7 @@
                       required: true,
                       placeholder: "Pet's color.",
                       hint: "It is important to provide a color." %>
-          <%= f.input :gender, as: :radio_buttons, 
+          <%= f.input :gender, as: :radio_buttons,
                       collection: [['Female', 'Female'], ['Male', 'Male'], ['Unknown', 'Unknown']],
                       label_method: :second, value_method: :first,
                       hint: "It'll be better to know the pet's gender." %>
@@ -45,10 +45,10 @@
                       label_html: { class: 'upload-photo'},
                       label: '📸 Upload a photo',
                       hint: "In order to anyone help you we need a photo." %>
-          
+
           <%= f.submit class: "btn btn-primary"%>
         <% end %>
       </div>
-    </div> 
+    </div>
   </div>
 </div>
