@@ -2,7 +2,7 @@ class ReportsController < ApplicationController
   before_action :set_pet, only: [:new, :create]
   before_action :set_report, only: [:update]
   skip_before_action :authenticate_user!, only: [ :index, :show ]
-  
+
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def index
@@ -32,14 +32,14 @@ class ReportsController < ApplicationController
     #   results = Report.joins(:pet).where("pets.breed ILIKE ?", params[:breed])
     # end
 
-
     if params[:query]
-        #result = Geocoder.search(params[:query])
-        @reports = results.geocoded.near(params[:query], 150).order('date DESC')
+        @center = Geocoder.search(params[:query]).first.coordinates
+        @reports = results.geocoded.near(@center, 150).order('date DESC')
       elsif user_signed_in?
         @user_address = current_user.address
+        @center = Geocoder.search(@user_address).first.coordinates
         if @user_address
-          @reports = results.geocoded.near(@user_address, 50).order('date DESC')
+          @reports = results.geocoded.near(@center, 50).order('date DESC')
         else
           @reports = results.geocoded.order('date DESC')
         end
@@ -52,7 +52,7 @@ class ReportsController < ApplicationController
         lat: report.latitude,
         lng: report.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { report: report }),
-        image_url: helpers.asset_url(report.pet.category.downcase == "dog" ? 'dog_icon.png' : 'cat_icon.png')
+        image_url: helpers.asset_url(report.pet.category.downcase == "dog" ? 'dog_icon.png' : 'cat_icon.png'),
       }
     end
   end

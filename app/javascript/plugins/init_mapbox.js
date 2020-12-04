@@ -24,26 +24,44 @@ const initMapbox = () => {
   };
 
   const fitMapToMarkers = (map, markers) => {
+    if (markers.length == 0) return
     const bounds = new mapboxgl.LngLatBounds();
     markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
     map.fitBounds(bounds, { padding: 70, maxZoom: 22, duration: 0 });
   };
 
+  const markers = JSON.parse(mapElement.dataset.markers);
+
+
   if (mapElement) {
     mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+
+  console.log(typeof mapElement.dataset.center)
+  const center = JSON.parse(mapElement.dataset.center)
+
+  if (mapElement.dataset.center !== 'null') {
+    console.log(mapElement.dataset.center);
     const map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/streets-v11'
+      style: 'mapbox://styles/mapbox/streets-v11',
+      center: [center[1], center[0]],
+      zoom: 16
     });
-
-    const markers = JSON.parse(mapElement.dataset.markers);
-
-    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-                                    mapboxgl: mapboxgl }));
 
     addMarkersToMap(map, markers);
 
     fitMapToMarkers(map, markers);
+
+  } else {
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11',
+    });
+
+    addMarkersToMap(map, markers);
+
+    fitMapToMarkers(map, markers);
+  }
     }
 };
 
