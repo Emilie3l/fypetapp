@@ -9,15 +9,17 @@
 
 .banner h1 {
   margin: 0 0 20px 0;
-  color: $text-headers-color;
+  color: $primary;
   text-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.35);
-  font-size: 4rem;
+  font-size: 3.5rem;
   font-weight: 700;
+  margin-bottom: 0;
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
 }
 
 .banner p {
-  font-size: 20px;
-  color: white;
-  opacity: .7;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 25px;
+  font-weight: bold;
+  color: $text-headers-color;
+  text-shadow: 2px 2px 4px rgba(255,255,255,0.8);
 }
