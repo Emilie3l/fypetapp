@@ -13,6 +13,12 @@
 .fypet-navbar-colored {
   background-color: $navbar-bg-color;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  .fypet-nav-link {
+    color: $success;
+  }
+  .fypet-nav-link:hover {
+    color: $primary;
+  }  
 }
 
 .fypet-navbar .navbar-collapse {
@@ -53,10 +59,10 @@
 }
 
 .fypet-nav-link {
-  color: #124A72;
+  color: white;
 }
 .fypet-nav-link:hover {
-  color: #E6455A;
+  color: $primary;
 }
 
 .fypet-navbar-nav {
