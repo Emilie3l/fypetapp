@@ -21,11 +21,11 @@ def generate_pet_gender
 end
 
 def generate_report_reunited
-  rand(8..10) == 10 ? false : true
+  rand(9..10) == 10 ? false : true
 end
 
 def generate_report_status
-  rand(7..10) == 10 ? "Lost" : "Missing"
+  rand(7..10) == 10 ? "Found" : "Missing"
 end
 
 def get_pet_name(gender)

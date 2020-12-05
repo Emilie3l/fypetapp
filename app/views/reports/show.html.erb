@@ -28,7 +28,13 @@
                   </div>
                 <% end %>
                 <div class="card-show-report-description">
-                  <h4 class="desc-name"><%= @report.pet.name %></h4>
+                  <h4 class="desc-name">
+                    <% if @report.pet.name.empty? %>
+                      Unknown
+                    <% else %>
+                      <%= @report.pet.name %>
+                    <% end %>
+                  </h4>
                   <h4 class="desc-category"><%= @report.pet.category.capitalize %></h4>
                 </div>
               </div>
@@ -39,8 +45,8 @@
             <div class="row ml-0">
               <h3>Details for Report #<%= @report.id %></h3>
               <!-- Shows or hide the edit icon according to the current user -->
-              <% if policy(@report).edit? %> 
-                <%= link_to "#" do %>
+              <% if policy(@report).edit? && !@report.reunited %> 
+                <%= link_to edit_report_path(@report) do %>
                   <i class="fas fa-edit"></i>
                 <% end %>
               <% end %>
@@ -147,7 +153,7 @@
               </div>
             </div>
 
-            <div class="row mt-3">
+            <div class="row mt-3 ml-0">
             
               <div class="report-actions">
                 <% if user_signed_in? %>
@@ -157,19 +163,20 @@
                     <% if policy(@report).edit? %>
                       <% if @report.reunited != true %>
                         <%= hidden_field_tag(:reunited, true) %>
-                        <%= f.submit "Safe & Sound", class: "btn btn-primary btn-wide", id: "btn-safesound" %>
+                        <%= f.submit "Reunite", class: "btn btn-primary btn-wide", id: "btn-reunite" %>
                       <% else %>
                         <%= hidden_field_tag(:reunited, false) %>
-                        <%= f.submit "#{@report.status} again", class: "btn btn-primary btn-wide" %>
+                        <%= f.submit "#{@report.status} again", class: "btn btn-primary btn-wide", id: "btn-reunite" %>
                       <% end %>
+                    <% else %>
+                      <%= link_to "Feedback", feedback_path(@report),
+                          class: "btn btn-success btn-wide", id: "btn-last" unless @report.reunited %> 
                     <% end %>
-                    <%= link_to "Feedback", feedback_path(@report),
-                        class: "btn btn-success btn-wide" unless @report.reunited %> 
                   <% end %>
                 <% else %>
                   <%= link_to "To Reports", reports_path, class: "btn btn-success btn-wide" %>
                   <%= link_to "Feedback", feedback_path(@report),
-                      class: "btn btn-success btn-wide" unless @report.reunited %>
+                      class: "btn btn-success btn-wide", id: "btn-last" unless @report.reunited %>
                 <% end %>
               </div>
               

@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   before_action :set_pet, only: [:new, :create]
-  before_action :set_report, only: [:update]
+  before_action :set_report, only: [:edit, :update]
   skip_before_action :authenticate_user!, only: [ :index, :show ]
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
@@ -52,7 +52,7 @@ class ReportsController < ApplicationController
         lat: report.latitude,
         lng: report.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { report: report }),
-        image_url: helpers.asset_url(report.pet.category.downcase == "dog" ? 'dog_icon.png' : 'cat_icon.png'),
+        image_url: helpers.asset_url(report.pet.category.downcase == "dog" ? 'dog_icon.png' : 'cat_icon.png')
       }
     end
   end
@@ -60,15 +60,15 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_strong_params)
     authorize @report
-
+    
     @report.pet = @pet
     @report.user = current_user
-
+    
     if @report.save
       redirect_to reports_path
-      flash[:notice] = "Your report has been created."
+      flash[:notice] = "Your report has been created 🙏, feedback is on its way 🤞"
     else
-      flash[:alert] = "Still fields without fill up."
+      flash[:alert] = "👀 Please fill up all the fields."
       render "reports/new"
     end
   end
@@ -78,29 +78,39 @@ class ReportsController < ApplicationController
     @report.pet = @pet
     authorize @report
   end
-
+  
   def show
     @report = Report.find(params[:id])
-    @pet = @report.pet
     authorize @report
   end
-
+  
   def edit
   end
-
+  
   def update
-    reunited = params.require(:reunited)
-    flash_show = reunited == "true" ? "Reunited" : "Un-Reunited"
-    reunited_date = reunited == "true" ? Date.today : nil
-    @report.reunited = reunited
-    @report.reunited_date = reunited_date
+    if params[:reunited]
+      reunited = params.require(:reunited)
+      reunited_date = reunited == "true" ? Date.today : nil
+      @report.reunited = reunited
+      @report.reunited_date = reunited_date
+    else
+      @report.update(report_strong_params)
+    end
 
     if @report.save
       redirect_to report_path
-      flash[:notice] = "Your report has been marked as #{flash_show}."
+      if params[:reunited]
+        if @report.reunited
+          flash[:notice] = "These are greats news!! 🎊 Congrats!! 🎉"
+        else
+          flash[:notice] = "😢 So bad to hear that. 🤞 Don't lose hope."
+        end
+      else
+        flash[:notice] = "👍 It's good to keep updated your reports. 🤞 Don't lose hope."
+      end
     else
-      redirect_to report_path
-      flash[:alert] = "We couldn't update the report."
+      render "edit"
+      flash[:alert] = "🙇‍♂️ We couldn't update the report."
     end
   end
 
@@ -124,7 +134,7 @@ class ReportsController < ApplicationController
   end
 
   def user_not_authorized
-    flash[:alert] = "You can modify your own reports."
+    flash[:alert] = "⛔ You can modify your own reports only."
     redirect_to(report_path)
   end
 end

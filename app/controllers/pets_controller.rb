@@ -13,7 +13,7 @@ class PetsController < ApplicationController
     if @pet.save
       redirect_to new_pet_report_path(@pet, @report)
     else
-      flash[:alert] = "Still fields without fill up."
+      flash[:alert] = "👀 Please fill up all the fields."
       render "pets/new"
     end
   end
@@ -25,6 +25,10 @@ class PetsController < ApplicationController
   end
 
   private
+  def pet_strong_params
+    params.require(:pet).permit(:name, :category, :color, :size, :gender, :age, :traits, :breed, :photo)
+  end
+
   def all_breeds
     all_breeds = []
     dog_breeds = get_dog_breeds
@@ -33,10 +37,6 @@ class PetsController < ApplicationController
     cat_breeds.each { |cat| all_breeds.push(cat) }
     all_breeds.push("Mixed")
     all_breeds.push("Unknown")
-  end
-
-  def pet_strong_params
-    params.require(:pet).permit(:name, :category, :color, :size, :gender, :age, :traits, :breed, :photo)
   end
 
   def get_dog_breeds
