@@ -1,27 +1,15 @@
-<div class="container card-large">
-<p>Find me in app/views/pets/new.html.erb</p>   <div class="container">
-    <div class="col-4 img-card">
-      <div class="report-status"><p>Missing</p></div>
-      <div class="custom-file">
-        <input type="file" class="custom-file-input" id="customFile">
-        <label class="custom-file-label" for="customFile">Choose file</label>
-      </div>
-    </div>
+<div class="container">
+  <div class="new-form">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <h3>Pet Details for New Report</h3>
+        <p>In order to start a new report, we need the pet's info. Please fill up this form.</p>
 
-    <div class="col-12 pet-card">
-      <div>
-        <%= render 'pet_form' %>
-      </div>
-    </div>
+          <!-- This is the call to _pet_form.html.erb -->
+          <%= render 'pet_form' %>
+          <!-- Here it returns the flow -->
 
-    <div class="row">
-      <div class="col-12 report-card">
-        <%= render "form_reg" %>
       </div>
-    </div>
-
-    <div class="card-button d-flex">
-      <a class="btn btn-primary btn-create mx-auto" href="#">Create Report</a>
     </div>
   </div>
 </div>
