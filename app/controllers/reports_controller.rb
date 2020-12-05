@@ -8,44 +8,43 @@ class ReportsController < ApplicationController
   def index
     dropdowns_query = Hash.new
     dropdowns_query[:category] = params[:category] if params[:category].present?
+    params[:breed] = "" unless params[:category].present?
+    
     dropdowns_query[:color] = params[:color] if params[:color].present?
     dropdowns_query[:breed] = params[:breed] if params[:breed].present?
     
     results = policy_scope(Report)
 
-    unless dropdowns_query.empty?
-      @reports = Report.joins(:pet).where(pets: dropdowns_query)
-    else
-      @reports = results.order('date DESC')
-    end
-    # raise
-    # if params[:category].present? && params[:color].present? && params[:breed].present?
-    #   results = Report.joins(:pet).where("pets.category ILIKE ? AND pets.color ILIKE ? AND pets.breed ILIKE ? ", params[:category], params[:color], params[:breed])
-
-    # elsif params[:category].present?
-    #   results = Report.joins(:pet).where("pets.category ILIKE ?", params[:category])
-
-    # elsif params[:color].present?
-    #   results = Report.joins(:pet).where("pets.color ILIKE ?", params[:color])
-
-    # elsif params[:breed].present?
-    #   results = Report.joins(:pet).where("pets.breed ILIKE ?", params[:breed])
-    # end
-
     if params[:query]
-        @center = Geocoder.search(params[:query]).first.coordinates
-        @reports = results.geocoded.near(@center, 150).order('date DESC')
-      elsif user_signed_in?
-        @user_address = current_user.address
-        @center = Geocoder.search(@user_address).first.coordinates
-        if @user_address
-          @reports = results.geocoded.near(@center, 50).order('date DESC')
-        else
-          @reports = results.geocoded.order('date DESC')
-        end
+      @center = Geocoder.search(params[:query]).first.coordinates
+      results_by_loc = results.geocoded.near(@center, 50).order('date DESC')
     else
-      @reports = results.geocoded.order('date DESC')
-     end
+      results_by_loc = results
+    end
+
+    unless dropdowns_query.empty?
+      @reports = results_by_loc.joins(:pet).where(pets: dropdowns_query).order('date DESC')
+    else
+      @reports = results_by_loc
+    end
+    # unless dropdowns_query.empty?
+    #   @reports = results.joins(:pet).where(pets: dropdowns_query).order('date DESC')
+    # else
+    #   if params[:query]
+    #     @center = Geocoder.search(params[:query]).first.coordinates
+    #     @reports = results.geocoded.near(@center, 150).order('date DESC')
+    #   elsif user_signed_in?
+    #     @user_address = current_user.address
+    #     unless @user_address.empty?
+    #       @center = Geocoder.search(@user_address).first.coordinates
+    #       @reports = results.geocoded.near(@center, 50).order('date DESC')
+    #     else
+    #       @reports = results.geocoded.order('date DESC')
+    #     end
+    #   else
+    #     @reports = results.geocoded.order('date DESC')
+    #   end
+    # end
 
     @markers = @reports.map do |report|
       {
