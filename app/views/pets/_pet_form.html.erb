@@ -1,84 +1,84 @@
-          <!-- \/ Here the form starts \/ -->
-          <%= simple_form_for @pet do |f| %>
+  <!-- \/ Here the form starts \/ -->
+<%= simple_form_for @pet do |f| %>
+  
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <%= f.input :category,
+                  required: true,
+                  collection: ['Dog', 'Cat'],
+                  label: "Kind of pet",
+                  placeholder: 'Dog or Cat',
+                  autofocus: true %>
+    </div>
 
-            <div class="form-row">
-              <div class="form-group col-md-4">
-                <%= f.input :category,
-                            required: true,
-                            collection: ['Dog', 'Cat'],
-                            label: "Kind of pet",
-                            placeholder: 'Dog or Cat',
-                            autofocus: true %>
-              </div>
+    <div class="form-group col-md-4">
+      <%= f.input :breed,
+                  required: true,
+                  collection: @breeds,
+                  placeholder: "Pet's breed." %>
+    </div>
 
-              <div class="form-group col-md-4">
-                <%= f.input :breed,
-                            required: true,
-                            collection: @breeds,
-                            placeholder: "Pet's breed." %>
-              </div>
+    <div class="form-group col-md-4">
+      <%= f.input :gender, 
+                  collection: ['Female', 'Male', 'Unknown'] %>
+    </div>
+  </div>
 
-              <div class="form-group col-md-4">
-                <%= f.input :gender, 
-                            collection: ['Female', 'Male', 'Unknown'] %>
-              </div>
-            </div>
+  <div class="form-row">
+    <div class="form-group col-md-5">
+      <%= image_tag "https://wolper.com.au/wp-content/uploads/2017/10/image-placeholder.jpg",
+          width: 250, height: 250, class: "hidden", id: "photo-preview" %>
+      <%= f.input :photo, as: :file,
+                  required: true,
+                  input_html: {  class: 'd-none', id: 'photo-input' },
+                  label_html: { class: 'upload-photo'},
+                  label: '📸 Upload a photo' %>
 
-            <div class="form-row">
-              <div class="form-group col-md-5">
-                <%= image_tag "https://wolper.com.au/wp-content/uploads/2017/10/image-placeholder.jpg",
-                    width: 250, height: 250, class: "hidden", id: "photo-preview" %>
-                <%= f.input :photo, as: :file,
-                            required: true,
-                            input_html: {  class: 'd-none', id: 'photo-input' },
-                            label_html: { class: 'upload-photo'},
-                            label: '📸 Upload a photo' %>
+      <%= f.submit class: "btn btn-primary btn-wide"%>
+    </div>
 
-                <%= f.submit class: "btn btn-primary btn-wide"%>
-              </div>
+    <div class="col-md-7">
 
-              <div class="col-md-7">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.input :name,
+                      placeholder: "Pet's name (optional)",
+                      hint: "Pet's name here, if you know it." %>
+        </div>
 
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <%= f.input :name,
-                                placeholder: "Pet's name (optional)",
-                                hint: "Pet's name here, if you know it." %>
-                  </div>
+        <div class="form-group col-md-6">
+          <%= f.input :size,
+                      required: true,
+                      collection: ['Small', 'Medium', 'Large'],
+                      selected: 'Choose size...',
+                      hint: "Choose a size from the list." %>
+        </div>
+      </div>
 
-                  <div class="form-group col-md-6">
-                    <%= f.input :size,
-                                required: true,
-                                collection: ['Small', 'Medium', 'Large'],
-                                selected: 'Choose size...',
-                                hint: "Choose a size from the list." %>
-                  </div>
-                </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <%= f.input :color,
+                      required: true,
+                      placeholder: "Pet's color." %>
+        </div>
 
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <%= f.input :color,
-                                required: true,
-                                placeholder: "Pet's color." %>
-                  </div>
+        <div class="form-group col-md-6">
+          <%= f.input :age, as: :string,
+                      placeholder: "Pet's age (optional)",
+                      hint: "This could be an stimated age." %>
+        </div>
+      </div>
 
-                  <div class="form-group col-md-6">
-                    <%= f.input :age, as: :string,
-                                placeholder: "Pet's age (optional)",
-                                hint: "This could be an stimated age." %>
-                  </div>
-                </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <%= f.input :traits,
+                      placeholder: "Particular traits (optional)",
+                      hint: "Something unique for this pet." %>
+        </div>
+      </div>
 
-                <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <%= f.input :traits,
-                                placeholder: "Particular traits (optional)",
-                                hint: "Something unique for this pet." %>
-                  </div>
-                </div>
+    </div>
+  </div>
 
-              </div>
-            </div>
-
-          <% end %>
-          <!-- /\ Here the form ends /\ -->
+<% end %>
+<!-- /\ Here the form ends /\ -->
