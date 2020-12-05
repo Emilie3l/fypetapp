@@ -34,14 +34,13 @@
     </div>
 
     <div class="right-index text-center">
-      <h2 class="pets-number pl-5"><span style="color: #E6455A"><%= @reports.length %></span> Pets Found Near You</h2>
+      <h2 class="pets-number pl-5"><span style="color: #E6455A"><%= @reports.length %></span> Pets Found</h2>
       <%= form_tag reports_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query, params[:query], class: "form-inline pl-3", placeholder: "Find pet by location"%>
       <%= submit_tag "Search", class: "btn btn-primary search-pets" %>
       <% end %>
     </div>
   </div>
-
 
   <div class="cardsmapcontainer">
     <div class="cards-container">
@@ -68,7 +67,6 @@
       </div>
     </div>
 
-
     <div class="container map">
       <div id="map"
         style="width: 100%; height: 500px;"
@@ -79,4 +77,3 @@
     </div>
   </div>
 </div>
-

@@ -50,7 +50,7 @@
 }
 
 .name {
-  color: black;
+  color: $success;
   font-family: $body-font;
   font-size: 15px;
   padding: 2px 16px;
@@ -59,7 +59,7 @@
 }
 
 .address {
-  color: grey;
+  color: rgba(0,0,0,0.8);
   font-family: $body-font;
   font-size: 13px;
   padding: 2px 16px;
